@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { Metadata } from "next";
 import { Calendar, MapPin, Clock, CheckCircle2, MessageCircle, Utensils, Star, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";

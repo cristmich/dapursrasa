@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { Metadata } from "next";
 import { CheckCircle2, Truck, HandPlatter, PartyPopper } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
