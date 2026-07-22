@@ -19,6 +19,7 @@ import {
   Coffee,
   Users,
   History,
+  FileText,
 } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -82,6 +83,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: "Menu Resto", href: "/dashboard/menu-resto", icon: Coffee },
     { name: "History Stok", href: "/dashboard/history-resto", icon: History },
     { name: "Daftar Menu", href: "/dashboard/daftar-menu", icon: MenuSquare },
+    { name: "Artikel", href: "/dashboard/artikel", icon: FileText },
     { name: "Pengguna", href: "/dashboard/users", icon: Users },
   ];
 

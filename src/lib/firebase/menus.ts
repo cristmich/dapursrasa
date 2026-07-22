@@ -44,6 +44,15 @@ export interface CateringPackage {
   createdAt?: any;
 }
 
+export interface ArticleItem {
+  id: string;
+  title: string;
+  content: string;
+  imageUrl?: string;
+  status: "Draft" | "Published";
+  createdAt?: any;
+}
+
 // Function to get all documents from a collection generically
 export const getMenus = async <T = MenuItem>(collectionName: string): Promise<T[]> => {
   try {
