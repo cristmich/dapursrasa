@@ -15,6 +15,10 @@ import {
   LogOut,
   ChevronRight,
   Globe,
+  MenuSquare,
+  Coffee,
+  Users,
+  History,
 } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -38,7 +42,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           try {
             const userRef = doc(db, "users", u.uid);
             const userSnap = await getDoc(userRef);
-            if (userSnap.exists() && userSnap.data().role === "superadmin") {
+            if (userSnap.exists() && (userSnap.data().role === "superadmin" || userSnap.data().role === "super admin")) {
               setIsAuthorized(true);
             } else {
               router.push("/");
@@ -75,6 +79,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: "Ringkasan", href: "/dashboard", icon: LayoutDashboard },
     { name: "Catering Mingguan", href: "/dashboard/catering-mingguan", icon: Utensils },
     { name: "Nasi Box", href: "/dashboard/nasi-box", icon: Package },
+    { name: "Menu Resto", href: "/dashboard/menu-resto", icon: Coffee },
+    { name: "History Stok", href: "/dashboard/history-resto", icon: History },
+    { name: "Daftar Menu", href: "/dashboard/daftar-menu", icon: MenuSquare },
+    { name: "Pengguna", href: "/dashboard/users", icon: Users },
   ];
 
   const userDisplayName = user?.displayName || user?.email?.split("@")[0] || "Admin";
