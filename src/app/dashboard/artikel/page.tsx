@@ -56,10 +56,8 @@ export default function ArtikelAdmin() {
           <h1 className="text-2xl font-bold text-gray-900 font-heading">Artikel & Blog</h1>
           <p className="text-gray-500 mt-1">Kelola konten artikel dan informasi terbaru untuk website.</p>
         </div>
-        <Button asChild className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-xl">
-          <Link href="/dashboard/artikel/form">
-            <Plus size={16} className="mr-2" /> Tulis Artikel
-          </Link>
+        <Button render={<Link href="/dashboard/artikel/form" />} className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-xl">
+          <Plus size={16} className="mr-2" /> Tulis Artikel
         </Button>
       </div>
 
