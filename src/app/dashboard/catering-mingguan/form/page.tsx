@@ -149,10 +149,8 @@ export default function CateringMingguanForm() {
   return (
     <div className="space-y-6 max-w-4xl">
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="icon" asChild className="rounded-xl shrink-0">
-          <Link href="/dashboard/catering-mingguan">
-            <ArrowLeft size={18} />
-          </Link>
+        <Button variant="outline" size="icon" onClick={() => router.push("/dashboard/catering-mingguan")} className="rounded-xl shrink-0">
+          <ArrowLeft size={18} />
         </Button>
         <div>
           <h1 className="text-2xl font-bold text-gray-900 font-heading">
@@ -258,8 +256,8 @@ export default function CateringMingguanForm() {
             </div>
 
             <div className="flex justify-end pt-4 border-t border-gray-100 gap-3">
-              <Button type="button" variant="outline" asChild className="rounded-xl px-6">
-                <Link href="/dashboard/catering-mingguan">Batal</Link>
+              <Button type="button" variant="outline" onClick={() => router.push("/dashboard/catering-mingguan")} className="rounded-xl px-6">
+                Batal
               </Button>
               <Button type="button" onClick={() => handleSave()} disabled={isSubmitting} className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-xl px-8">
                 {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : editId ? "Simpan Perubahan" : "Simpan Paket Catering"}

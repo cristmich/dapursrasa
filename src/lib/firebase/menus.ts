@@ -93,9 +93,7 @@ export const addMenu = async <T extends { [key: string]: any }>(collectionName: 
 export const updateMenu = async <T extends { [key: string]: any }>(collectionName: string, menuId: string, menuData: Partial<T>): Promise<void> => {
   try {
     const menuRef = doc(db, collectionName, menuId);
-    await updateDoc(menuRef, {
-      ...menuData
-    });
+    await updateDoc(menuRef, menuData as any);
   } catch (error) {
     console.error(`Error updating ${collectionName}:`, error);
     throw error;
