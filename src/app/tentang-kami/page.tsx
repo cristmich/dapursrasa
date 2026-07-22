@@ -19,7 +19,7 @@ export default function TentangKamiPage() {
   return (
     <>
       <div className="bg-[#005926] pt-28 pb-20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-[url('/cta-image.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">Cerita Dapur Srasa</h1>
           <p className="text-xl max-w-2xl mx-auto text-white/90">
@@ -33,7 +33,7 @@ export default function TentangKamiPage() {
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
             <div className="md:w-1/2 relative min-h-[300px] md:min-h-full">
               <Image 
-                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=800" 
+                src="/about-us.png" 
                 alt="Dapur Srasa Kitchen"
                 fill
                 className="object-cover"

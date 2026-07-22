@@ -12,7 +12,7 @@ const services = [
     title: "Catering Mingguan",
     description: "Nikmati menu berbeda setiap minggu dengan masakan rumahan yang lezat, bergizi, dan selalu fresh dikirim langsung ke pintu Anda.",
     icon: CalendarDays,
-    image: "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&q=80&w=800",
+    image: "/image-catering.png",
     features: [
       "Menu baru setiap minggu",
       "Cocok untuk kantor & keluarga",
@@ -32,7 +32,7 @@ const services = [
     title: "Nasi Box Premium",
     description: "Nasi Box premium mulai Rp 35.000 dengan pilihan menu lengkap. Cocok untuk seminar, arisan, wedding, dan acara korporat.",
     icon: PackageOpen,
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=800",
+    image: "/image-nasibox.png",
     features: [
       "Harga mulai Rp 35.000/box",
       "FREE Ongkir Jabodetabek",

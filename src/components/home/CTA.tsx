@@ -9,7 +9,7 @@ export function CTA() {
     <section className="py-24 relative overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-[#005926] z-0"></div>
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center opacity-20 mix-blend-overlay z-0"></div>
+      <div className="absolute inset-0 bg-[url('/cta-image.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay z-0"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
