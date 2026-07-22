@@ -5,11 +5,23 @@ import { CTA } from "@/components/home/CTA";
 import Link from "next/link";
 
 const slugify = (text: string) => text.toLowerCase().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '');
+function formatArea(area: string) {
+  if (!area) return 'Gading Serpong, BSD, Alam Sutera';
+  return area.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
 
-export const metadata: Metadata = {
-  title: "Catering Mingguan | Dapur Srasa",
-  description: "Layanan catering mingguan dengan menu rumahan variatif untuk area Gading Serpong, BSD, Alam Sutera, dan sekitarnya. Mulai Rp35.000 per porsi.",
-};
+type Props = {
+  params: Promise<{ area: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { area } = await params;
+  const areaName = formatArea(area);
+  return {
+    title: `Catering Mingguan di ${areaName} | Dapur Srasa`,
+    description: `Layanan catering mingguan premium di ${areaName}. Menu rumahan variatif, 100% halal, gratis ongkir. Mulai Rp35.000 per porsi.`,
+  };
+}
 
 const menuMingguan = [
   {
@@ -47,11 +59,14 @@ const menuMingguan = [
 const keunggulan = [
   { icon: Utensils, title: "Menu Berganti Tiap Hari", desc: "Tidak bosan, selalu ada pilihan baru setiap harinya." },
   { icon: CheckCircle2, title: "100% Halal & Higienis", desc: "Dimasak dengan bahan segar dari sumber terpercaya." },
-  { icon: Truck, title: "Antar ke Lokasi Anda", desc: "Pengiriman pagi & siang untuk area Gading Serpong, BSD, Alam Sutera." },
+  { icon: Truck, title: "Antar ke Lokasi Anda", desc: "Pengiriman pagi & siang tepat waktu setiap harinya." },
   { icon: Star, title: "Harga Mulai Rp35.000", desc: "Terjangkau tanpa mengorbankan kualitas dan rasa." },
 ];
 
-export default function CateringMingguanPage() {
+export default async function CateringMingguanAreaPage({ params }: Props) {
+  const { area } = await params;
+  const areaName = formatArea(area);
+
   return (
     <>
       {/* ── HERO ── */}
@@ -67,15 +82,16 @@ export default function CateringMingguanPage() {
               <span className="text-sm font-semibold tracking-wide">Layanan Berlangganan</span>
             </div>
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Catering <span className="text-[#D4AF37]">Mingguan</span>
+              Catering Mingguan <br />
+              <span className="text-[#D4AF37] text-3xl md:text-4xl lg:text-5xl mt-2 block">di {areaName}</span>
             </h1>
             <p className="text-lg text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Solusi makan harian yang praktis dan lezat. Menu rumahan premium yang berganti setiap harinya, dimasak dengan bahan segar dan higienis.
+              Solusi makan harian yang praktis dan lezat untuk Anda di {areaName}. Menu rumahan premium yang berganti setiap harinya, dimasak dengan bahan segar dan higienis.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <div className="flex items-center gap-2 text-white/90 bg-white/10 border border-white/15 px-4 py-2 rounded-full text-sm font-medium">
                 <MapPin className="text-[#D4AF37]" size={16} />
-                <span>Gading Serpong, BSD & Alam Sutera</span>
+                <span>Pengiriman Spesial {areaName}</span>
               </div>
               <div className="flex items-center gap-2 text-white/90 bg-white/10 border border-white/15 px-4 py-2 rounded-full text-sm font-medium">
                 <Clock className="text-[#D4AF37]" size={16} />
@@ -180,10 +196,10 @@ export default function CateringMingguanPage() {
           {/* CTA Button */}
           <div className="mt-14 text-center">
             <p className="text-gray-500 text-sm mb-5">
-              Paket Premium Mingguan mulai dari <span className="font-bold text-[#005926]">Rp 199.000 / minggu</span> (Senin–Jumat). Minimal berlangganan 5 hari kerja.
+              Paket Premium Mingguan di {areaName} mulai dari <span className="font-bold text-[#005926]">Rp 199.000 / minggu</span> (Senin–Jumat). Minimal berlangganan 5 hari kerja.
             </p>
             <Button
-              render={<a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20tertarik%20berlangganan%20Catering%20Mingguan.%20%28Dari%20Halaman%20Catering%20Mingguan%29" target="_blank" rel="noopener noreferrer" />}
+              render={<a href={`https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20di%20${areaName}%20tertarik%20berlangganan%20Catering%20Mingguan`} target="_blank" rel="noopener noreferrer" />}
               size="lg"
               className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-full h-14 px-10 shadow-lg shadow-[#005926]/20 transition-all hover:scale-105 text-base"
             >
@@ -205,7 +221,7 @@ export default function CateringMingguanPage() {
               Area <span className="text-[#005926]">Pengiriman</span>
             </h2>
             <p className="text-gray-500 leading-relaxed">
-              Saat ini kami melayani pengiriman Catering Premium Mingguan untuk area Tangerang Selatan dan sekitarnya.
+              Saat ini kami melayani pengiriman Catering Premium Mingguan untuk area {areaName} dan sekitarnya.
             </p>
           </div>
 
@@ -266,7 +282,7 @@ export default function CateringMingguanPage() {
               <p className="text-sm text-gray-500">Hubungi admin kami untuk konfirmasi jangkauan lokasi Anda. Kami terus memperluas area layanan!</p>
             </div>
             <Button
-              render={<a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20ingin%20tanya%20apakah%20area%20saya%20termasuk%20jangkauan%20Catering%20Mingguan%3F" target="_blank" rel="noopener noreferrer" />}
+              render={<a href={`https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20di%20${areaName}%20ingin%20tanya%20jangkauan%20Catering%20Mingguan`} target="_blank" rel="noopener noreferrer" />}
               className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-full px-6 shrink-0"
             >
               Tanya Area Saya

@@ -105,20 +105,23 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-[#005926] relative group ${
-                  pathname === link.href ? "text-[#005926]" : "text-[#555]"
-                }`}
-              >
-                {link.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#005926] transition-all duration-300 ${
-                  pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
-                }`} />
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`));
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-[#005926] relative group ${
+                    isActive ? "text-[#005926]" : "text-[#555]"
+                  }`}
+                >
+                  {link.name}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#005926] transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`} />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Side: CTA + User + Mobile Toggle */}
@@ -232,19 +235,22 @@ export function Navbar() {
               )}
 
               {/* Nav Links */}
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                    pathname === link.href
-                      ? "bg-[#005926]/10 text-[#005926] font-semibold"
-                      : "text-[#333] hover:bg-gray-50"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`));
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-[#005926]/10 text-[#005926] font-semibold"
+                        : "text-[#333] hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
 
               {/* Mobile Actions */}
               <div className="pt-3 mt-2 border-t border-gray-100 flex flex-col gap-2">

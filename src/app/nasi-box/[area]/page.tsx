@@ -6,11 +6,24 @@ import { CTA } from "@/components/home/CTA";
 import Link from "next/link";
 
 const slugify = (text: string) => text.toLowerCase().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '');
+// Helper to format area string
+function formatArea(area: string) {
+  if (!area) return 'Jabodetabek';
+  return area.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
 
-export const metadata: Metadata = {
-  title: "Nasi Box Termurah di Tangerang & Jakarta | Dapur Srasa",
-  description: "Pesan Nasi Box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, dan Jakarta. Harga mulai Rp35.000, 100% halal, lezat, dan Gratis Ongkir Jabodetabek.",
-};
+type Props = {
+  params: Promise<{ area: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { area } = await params;
+  const areaName = formatArea(area);
+  return {
+    title: `Nasi Box Termurah di ${areaName} | Dapur Srasa`,
+    description: `Pesan Nasi Box termurah No 1 di ${areaName}. Harga mulai Rp35.000, 100% halal, lezat, dan Gratis Ongkir Jabodetabek.`,
+  };
+}
 
 const paketNasiBox = [
   {
@@ -38,22 +51,25 @@ const kategoriAcara = [
   "Corporate Event", "Seminar & Workshop", "Gathering", "Rapat Kantoran", "Arisan Keluarga", "Ulang Tahun", "Wedding / Lamaran", "Syukuran", "Pengajian"
 ];
 
-export default function NasiBoxPage() {
+export default async function NasiBoxAreaPage({ params }: Props) {
+  const { area } = await params;
+  const areaName = formatArea(area);
+
   return (
     <>
       <section className="bg-gradient-to-br from-[#005926] to-[#003818] pt-28 pb-20 text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Nasi Box Premium <br /> Mulai <span className="text-[#D4AF37]">Rp 35.000</span>
+              Nasi Box Termurah di {areaName} <br /> Mulai <span className="text-[#D4AF37]">Rp 35.000</span>
             </h1>
             <p className="text-xl text-white/90 mb-10">
-              Sajian lezat, kemasan elegan, dan pelayanan profesional untuk mensukseskan acara Anda.
+              Sajian lezat, kemasan elegan, dan pelayanan profesional untuk mensukseskan acara Anda di area {areaName} dan sekitarnya.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm font-medium">
               <div className="flex items-center justify-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <Truck className="text-[#D4AF37]" size={18} />
-                <span>FREE Ongkir Jabodetabek*</span>
+                <span>FREE Ongkir ke {areaName}*</span>
               </div>
               <div className="flex items-center justify-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <HandPlatter className="text-[#D4AF37]" size={18} />
@@ -71,7 +87,7 @@ export default function NasiBoxPage() {
       <section className="py-20 bg-[#F8F8F8]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl font-bold text-[#333333] mb-4">Pilihan Paket Nasi Box</h2>
+            <h2 className="font-heading text-3xl font-bold text-[#333333] mb-4">Pilihan Paket Nasi Box untuk {areaName}</h2>
             <p className="text-gray-600">Sesuaikan dengan budget dan kebutuhan acara Anda.</p>
           </div>
 
@@ -99,7 +115,7 @@ export default function NasiBoxPage() {
                   </ul>
                 </CardContent>
                 <CardFooter className="pt-6 pb-8">
-                  <Button render={<a href={`https://wa.me/62895328596248?text=Halo%20Admin%20Srasa,%20saya%20tertarik%20dengan%20Nasi%20Box%20${paket.nama}`} target="_blank" rel="noopener noreferrer" />} className={`w-full rounded-full h-12 ${paket.populer ? 'bg-[#005926] hover:bg-[#004a1f] text-white' : 'bg-gray-100 text-[#333333] hover:bg-gray-200'}`}>
+                  <Button render={<a href={`https://wa.me/62895328596248?text=Halo%20Admin%20Srasa,%20saya%20di%20${areaName}%20tertarik%20dengan%20Nasi%20Box%20${paket.nama}`} target="_blank" rel="noopener noreferrer" />} className={`w-full rounded-full h-12 ${paket.populer ? 'bg-[#005926] hover:bg-[#004a1f] text-white' : 'bg-gray-100 text-[#333333] hover:bg-gray-200'}`}>
                     Pesan {paket.nama}
                   </Button>
                 </CardFooter>
@@ -136,7 +152,7 @@ export default function NasiBoxPage() {
               Area <span className="text-[#005926]">Gratis Ongkir*</span>
             </h2>
             <p className="text-gray-500 leading-relaxed">
-              Kami menjangkau seluruh wilayah Jabodetabek. Nikmati layanan antar gratis khusus untuk pemesanan <span className="font-bold text-[#005926]">minimal 100 box</span>.
+              Kami menjangkau seluruh wilayah Jabodetabek, termasuk {areaName}. Nikmati layanan antar gratis khusus untuk pemesanan <span className="font-bold text-[#005926]">minimal 100 box</span>.
             </p>
           </div>
 
@@ -171,11 +187,11 @@ export default function NasiBoxPage() {
 
                 {/* Area list */}
                 <ul className="space-y-2 flex-1">
-                  {region.areas.map((area, i) => (
+                  {region.areas.map((a, i) => (
                     <li key={i}>
-                      <Link href={`/nasi-box/${slugify(area)}`} className="flex items-center gap-2 text-xs text-gray-600 hover:text-[#005926] hover:font-medium transition-colors">
+                      <Link href={`/nasi-box/${slugify(a)}`} className="flex items-center gap-2 text-xs text-gray-600 hover:text-[#005926] hover:font-medium transition-colors">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#005926] shrink-0" />
-                        {area}
+                        {a}
                       </Link>
                     </li>
                   ))}

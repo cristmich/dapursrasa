@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function CaraOrderPage() {
   return (
     <>
-      <section className="bg-gradient-to-br from-[#005926] to-[#003818] py-24 pt-32 text-white">
+      <section className="bg-gradient-to-br from-[#005926] to-[#003818] pt-28 pb-20 text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">

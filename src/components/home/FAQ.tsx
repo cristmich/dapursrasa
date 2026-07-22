@@ -7,7 +7,7 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     question: "Apakah ada minimum order untuk pemesanan Nasi Box?",
-    answer: "Untuk Gratis Ongkir, minimum order biasanya mulai dari 20-30 pax tergantung area pengiriman (Gading Serpong, BSD, Alam Sutera). Jika di bawah minimum order, tetap bisa kami layani dengan tambahan ongkos kirim sesuai jarak."
+    answer: "Untuk Gratis Ongkir, minimum order adalah 100 box. Kami menjangkau seluruh wilayah Jabodetabek. Jika di bawah minimum order, tetap bisa kami layani dengan tambahan ongkos kirim sesuai jarak."
   },
   {
     question: "Berapa lama maksimal pemesanan (H-?) harus dilakukan?",

@@ -46,7 +46,7 @@ export default function HubungiKamiPage() {
   return (
     <>
       {/* ── HERO HEADER ── */}
-      <div className="relative bg-gradient-to-br from-[#005926] to-[#003818] pt-32 pb-40 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#005926] to-[#003818] pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-10 w-80 h-80 bg-[#D4AF37] rounded-full blur-3xl" />
