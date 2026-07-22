@@ -58,11 +58,20 @@ export const metadata: Metadata = {
     siteName: "Dapur Srasa",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "https://dapursrasa.com/meta-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Dapur Srasa - Catering Termurah No 1 di Jabodetabek",
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Catering Termurah No 1 di Tangerang & Jakarta | Dapur Srasa",
     description: "Catering harian rumahan premium dan nasi box termurah no 1 untuk wilayah BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta dan sekitarnya.",
+    images: ["https://dapursrasa.com/meta-image.png"],
   },
   icons: {
     icon: [
@@ -141,7 +150,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Restaurant",
               "name": "Dapur Srasa",
-              "image": "https://dapursrasa.com/images/hero.jpg",
+              "image": "https://dapursrasa.com/meta-image.png",
               "description": "Layanan catering harian dan nasi box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta dan sekitarnya.",
               "address": {
                 "@type": "PostalAddress",
