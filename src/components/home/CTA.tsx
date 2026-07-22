@@ -27,7 +27,7 @@ export function CTA() {
             </p>
             
             <Button 
-              render={<a href="https://wa.me/62895328596248" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3" />}
+              render={<a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20ingin%20konsultasi%20pesanan%20katering.%20%28Dari%20Bagian%20Bawah%20Beranda%29" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3" />}
               size="lg" 
               className="bg-[#25D366] hover:bg-[#20b858] text-white rounded-full text-lg h-16 px-10 shadow-lg shadow-[#25D366]/30 transition-transform hover:scale-105"
             >

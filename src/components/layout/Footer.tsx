@@ -60,7 +60,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-[#D4AF37] shrink-0" />
-                <a href="https://wa.me/62895328596248" className="text-gray-200 hover:text-white text-sm transition-colors">
+                <a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20menghubungi%20dari%20Footer%20Website." className="text-gray-200 hover:text-white text-sm transition-colors">
                   +62 895-3285-96248
                 </a>
               </li>

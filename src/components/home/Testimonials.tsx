@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import { motion } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star } from "lucide-react";
 
 // Each conversation: array of messages
 // role: "customer" | "admin"
@@ -213,11 +212,6 @@ function WhatsAppChat({ conv }: { conv: typeof conversations[0] }) {
 }
 
 export function Testimonials() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    scrollRef.current?.scrollBy({ left: dir === "right" ? 360 : -360, behavior: "smooth" });
-  };
 
   return (
     <section className="py-24 bg-gradient-to-b from-[#F8F8F8] to-white overflow-hidden">
@@ -260,46 +254,21 @@ export function Testimonials() {
           <span className="text-gray-400 text-sm">dari 200+ ulasan nyata</span>
         </motion.div>
 
-        {/* Horizontal scroll */}
+        {/* Infinite Horizontal Marquee */}
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#F8F8F8] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          {/* Gradient edges for smooth fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#F8F8F8] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-          <div
-            ref={scrollRef}
-            className="flex gap-8 overflow-x-auto pb-10 pt-2 snap-x snap-mandatory scroll-smooth px-6"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {conversations.map((conv, index) => (
-              <motion.div
-                key={conv.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.07, duration: 0.5 }}
-                className="snap-center"
-              >
-                <WhatsAppChat conv={conv} />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Nav */}
-          <div className="flex justify-center gap-3 mt-2">
-            <button
-              onClick={() => scroll("left")}
-              className="bg-white border border-gray-200 w-11 h-11 rounded-full flex items-center justify-center shadow-sm hover:bg-[#005926] hover:text-white hover:border-[#005926] transition-all"
-              aria-label="Scroll kiri"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="bg-white border border-gray-200 w-11 h-11 rounded-full flex items-center justify-center shadow-sm hover:bg-[#005926] hover:text-white hover:border-[#005926] transition-all"
-              aria-label="Scroll kanan"
-            >
-              <ChevronRight size={20} />
-            </button>
+          <div className="overflow-hidden flex w-full">
+            <div className="flex gap-8 pb-10 pt-2 animate-marquee w-max px-4 hover:animate-pause">
+              {/* Duplicate array for seamless infinite scrolling */}
+              {[...conversations, ...conversations].map((conv, index) => (
+                <div key={index} className="shrink-0">
+                  <WhatsAppChat conv={conv} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

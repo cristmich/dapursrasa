@@ -16,6 +16,7 @@ const navLinks = [
   { name: "Catering Mingguan", href: "/catering-mingguan" },
   { name: "Nasi Box", href: "/nasi-box" },
   { name: "Portofolio", href: "/portofolio" },
+  { name: "Cara Order", href: "/cara-order" },
   { name: "Tentang Kami", href: "/tentang-kami" },
   { name: "Hubungi Kami", href: "/hubungi-kami" },
 ];

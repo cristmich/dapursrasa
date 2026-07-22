@@ -51,6 +51,18 @@ export const metadata: Metadata = {
     "nasi box ayam bakar"
   ],
   authors: [{ name: "Dapur Srasa" }],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Catering & Nasi Box Termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta",
     description: "Catering harian rumahan premium dan nasi box termurah no 1 untuk wilayah BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta dan sekitarnya.",

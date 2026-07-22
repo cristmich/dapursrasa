@@ -60,7 +60,7 @@ const steps = [
   },
 ];
 
-const WA_LINK = "https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20mau%20pesan%20catering!";
+const WA_LINK = "https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20siap%20memesan%20sekarang.%20%28Dari%20Cara%20Pemesanan%29";
 
 export function HowToOrder() {
   return (

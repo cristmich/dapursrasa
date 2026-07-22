@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { CTA } from "@/components/home/CTA";
 
 export const metadata: Metadata = {
-  title: "Nasi Box Premium | Dapur Srasa",
-  description: "Nasi box premium dengan harga terjangkau mulai dari Rp35.000. Gratis ongkir se-Jabodetabek dan menu bisa request.",
+  title: "Nasi Box Termurah di Tangerang & Jakarta | Dapur Srasa",
+  description: "Pesan Nasi Box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, dan Jakarta. Harga mulai Rp35.000, 100% halal, lezat, dan Gratis Ongkir Jabodetabek.",
 };
 
 const paketNasiBox = [
@@ -117,6 +117,49 @@ export default function NasiBoxPage() {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-[#F8F8F8]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="font-heading text-3xl font-bold text-[#333333] mb-4">Area Pengiriman (Gratis Ongkir*)</h2>
+            <p className="text-gray-600">Kami menjangkau seluruh wilayah Jabodetabek. Nikmati layanan antar gratis untuk pesanan dalam jumlah tertentu.</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+            {[
+              { city: "Tangerang", areas: ["BSD City", "Gading Serpong", "Alam Sutera", "Bintaro", "Cikupa"] },
+              { city: "Jakarta", areas: ["Jakarta Selatan", "Jakarta Pusat", "Jakarta Barat", "Jakarta Timur", "Jakarta Utara"] },
+              { city: "Depok", areas: ["Margonda", "Cibubur", "Cinere", "Sawangan"] },
+              { city: "Bogor", areas: ["Kota Bogor", "Sentul", "Cibinong"] },
+              { city: "Bekasi", areas: ["Kota Bekasi", "Cikarang", "Tambun"] }
+            ].map((region, idx) => (
+              <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-[#005926]/30 transition-all">
+                <h3 className="font-bold text-[#005926] mb-4 text-lg border-b border-gray-100 pb-2">{region.city}</h3>
+                <ul className="space-y-2">
+                  {region.areas.map((area, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></div>
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+             <p className="text-sm text-gray-500 italic mb-4">
+               *Gratis ongkir berlaku dengan minimum pemesanan. <br className="md:hidden" /> Area Anda tidak tercatat di atas? Jangan khawatir!
+             </p>
+             <Button 
+               render={<a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20ingin%20bertanya%20apakah%20area%20%5BNAMA%20AREA%5D%20masuk%20jangkauan%20pengiriman%20Nasi%20Box%3F" target="_blank" rel="noopener noreferrer" />} 
+               variant="outline"
+               className="rounded-full border-[#005926] text-[#005926] hover:bg-[#005926] hover:text-white transition-colors"
+             >
+               Tanya Jangkauan Area
+             </Button>
           </div>
         </div>
       </section>
