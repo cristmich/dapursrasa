@@ -110,10 +110,8 @@ export default function ArtikelAdmin() {
                   
                   {/* Actions */}
                   <div className="flex items-center justify-end gap-2 pt-4 mt-4 border-t border-gray-100">
-                    <Button variant="outline" size="sm" asChild className="rounded-xl border-gray-200 text-gray-600 hover:text-[#005926]">
-                      <Link href={`/dashboard/artikel/form?id=${article.id}`}>
-                        <Pencil size={14} className="mr-1.5" /> Edit
-                      </Link>
+                    <Button variant="outline" size="sm" render={<Link href={`/dashboard/artikel/form?id=${article.id}`} />} className="rounded-xl border-gray-200 text-gray-600 hover:text-[#005926]">
+                      <Pencil size={14} className="mr-1.5" /> Edit
                     </Button>
                     <Button variant="outline" size="sm" onClick={() => handleDelete(article.id)} className="rounded-xl border-gray-200 text-gray-600 hover:text-red-600 hover:bg-red-50">
                       <Trash2 size={14} className="mr-1.5" /> Hapus
