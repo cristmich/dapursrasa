@@ -57,8 +57,10 @@ export function Navbar() {
         try {
           const userRef = doc(db, "users", currentUser.uid);
           const userSnap = await getDoc(userRef);
-          if (userSnap.exists() && userSnap.data().role === "superadmin") {
-            setIsAdmin(true);
+          if (userSnap.exists()) {
+            const role = userSnap.data().role || "user";
+            const isStaff = ["superadmin", "super admin", "admin toko", "waiters", "dapur"].includes(role);
+            setIsAdmin(isStaff || isEmailAdmin);
           } else {
             setIsAdmin(isEmailAdmin);
           }
@@ -171,7 +173,7 @@ export function Navbar() {
                               <div className="w-7 h-7 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
                                 <LayoutDashboard size={14} />
                               </div>
-                              Dashboard Admin
+                              Dashboard
                             </Link>
                           )}
                           <button
@@ -259,7 +261,7 @@ export function Navbar() {
                     {isAdmin && (
                       <Button variant="outline" render={<Link href="/dashboard" />} className="w-full rounded-xl border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white transition-colors justify-start gap-2 px-4">
                         <LayoutDashboard size={16} />
-                        Dashboard Admin
+                        Dashboard
                       </Button>
                     )}
                     <Button variant="outline" onClick={handleLogout} className="w-full rounded-xl border-red-200 text-red-600 hover:bg-red-50 justify-start gap-2 px-4">

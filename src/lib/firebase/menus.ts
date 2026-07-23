@@ -51,6 +51,9 @@ export interface ArticleItem {
   imageUrl?: string;
   status: "Draft" | "Published";
   createdAt?: any;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeyword?: string;
 }
 
 // Function to get all documents from a collection generically

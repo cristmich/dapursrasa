@@ -26,6 +26,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
+  const [userRole, setUserRole] = useState<string>("User");
   const router = useRouter();
   const pathname = usePathname();
 
@@ -38,13 +39,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         if (isEmailAdmin) {
           setIsAuthorized(true);
+          setUserRole("Super Admin");
           setIsLoading(false);
         } else {
           try {
             const userRef = doc(db, "users", u.uid);
             const userSnap = await getDoc(userRef);
-            if (userSnap.exists() && (userSnap.data().role === "superadmin" || userSnap.data().role === "super admin")) {
-              setIsAuthorized(true);
+            if (userSnap.exists()) {
+              const role = userSnap.data().role || "user";
+              const isStaff = ["superadmin", "super admin", "admin toko", "waiters", "dapur"].includes(role);
+              if (isStaff) {
+                setIsAuthorized(true);
+                setUserRole(role);
+              } else {
+                router.push("/");
+              }
             } else {
               router.push("/");
             }
@@ -148,7 +157,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
             <div className="hidden sm:block leading-tight">
               <p className="text-xs font-semibold text-gray-800 truncate max-w-[96px]">{userDisplayName}</p>
-              <p className="text-[10px] text-[#D4AF37] font-semibold">Superadmin</p>
+              <p className="text-[10px] text-[#D4AF37] font-semibold capitalize">{userRole}</p>
             </div>
           </div>
         </div>
