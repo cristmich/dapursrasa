@@ -15,64 +15,54 @@ const regions = [
   { city: "Bekasi", areas: ["Kota Bekasi", "Summarecon Bekasi", "Cikarang", "Tambun"] },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://dapursrasa.com"; // Ganti dengan domain asli saat production
+const cateringRegions = [
+  { city: "Gading Serpong", areas: ["Summarecon", "Paramount", "Modernland", "Kelapa Dua", "Curug"] },
+  { city: "BSD City", areas: ["BSD Sektor 1-7", "Foresta", "The Icon", "Pagedangan", "Cisauk"] },
+  { city: "Alam Sutera", areas: ["Alam Sutera", "Serpong Utara", "Pakualam", "Jelupang", "Cipondoh"] },
+];
 
-  // Default static pages
-  const sitemapUrls: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}`, lastModified: new Date(), changeFrequency: "yearly", priority: 1 },
-    { url: `${baseUrl}/catering-mingguan`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
-    { url: `${baseUrl}/nasi-box`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${baseUrl}/portofolio`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/tentang-kami`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.7 },
-    { url: `${baseUrl}/hubungi-kami`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.8 },
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://dapursrasa.com";
+  const now = new Date();
+
+  // Static core pages — high priority
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
+    { url: `${baseUrl}/catering-mingguan`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${baseUrl}/nasi-box`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/portofolio`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${baseUrl}/tentang-kami`, lastModified: now, changeFrequency: "yearly", priority: 0.65 },
+    { url: `${baseUrl}/cara-order`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
+    { url: `${baseUrl}/hubungi-kami`, lastModified: now, changeFrequency: "yearly", priority: 0.75 },
   ];
 
-  // Generate all area slugs for Root (/<area>) and Nasi Box (/nasi-box/<area>)
+  // Area-specific landing pages (SEO local intent)
   const areaSlugs = regions.flatMap(r => [
     slugify(r.city),
-    ...r.areas.map(a => slugify(a))
+    ...r.areas.map(a => slugify(a)),
   ]);
 
-  areaSlugs.forEach((slug) => {
-    // Root area pages (/<area>)
-    sitemapUrls.push({
-      url: `${baseUrl}/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
-    
-    // Nasi Box area pages (/nasi-box/<area>)
-    sitemapUrls.push({
-      url: `${baseUrl}/nasi-box/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    });
-  });
+  const areaPages: MetadataRoute.Sitemap = areaSlugs.flatMap((slug) => [
+    { url: `${baseUrl}/${slug}`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/nasi-box/${slug}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+  ]);
 
-  // Catering Mingguan areas (hanya area tertentu)
-  const cateringRegions = [
-    { city: "Gading Serpong", areas: ["Summarecon", "Paramount", "Modernland", "Kelapa Dua", "Curug"] },
-    { city: "BSD City", areas: ["BSD Sektor 1–7", "Foresta", "The Icon", "Pagedangan", "Cisauk"] },
-    { city: "Alam Sutera", areas: ["Alam Sutera", "Serpong Utara", "Pakualam", "Jelupang", "Cipondoh"] },
-  ];
-  
+  // Catering mingguan area pages
   const cateringSlugs = cateringRegions.flatMap(r => [
     slugify(r.city),
-    ...r.areas.map(a => slugify(a))
+    ...r.areas.map(a => slugify(a)),
   ]);
-  
-  cateringSlugs.forEach((slug) => {
-    // Catering Mingguan area pages (/catering-mingguan/<area>)
-    sitemapUrls.push({
-      url: `${baseUrl}/catering-mingguan/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    });
-  });
 
-  return sitemapUrls;
+  const cateringPages: MetadataRoute.Sitemap = cateringSlugs.map((slug) => ({
+    url: `${baseUrl}/catering-mingguan/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.75,
+  }));
+
+  return [
+    ...staticPages,
+    ...areaPages,
+    ...cateringPages,
+  ];
 }

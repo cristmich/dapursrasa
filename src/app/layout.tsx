@@ -19,6 +19,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dapursrasa.com"),
   title: {
     default: "Catering Termurah No 1 di BSD, Gading Serpong, Alam Sutera & Jakarta | Dapur Srasa",
     template: "%s | Dapur Srasa"
@@ -50,7 +51,19 @@ export const metadata: Metadata = {
     "catering event murah",
     "nasi box ayam bakar"
   ],
-  authors: [{ name: "Dapur Srasa" }],
+  authors: [{ name: "Dapur Srasa", url: "https://dapursrasa.com" }],
+  creator: "Dapur Srasa",
+  publisher: "Dapur Srasa",
+  category: "Food & Restaurant",
+  alternates: {
+    canonical: "https://dapursrasa.com",
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+    other: {
+      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
+    },
+  },
   robots: {
     index: true,
     follow: true,
@@ -76,6 +89,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Dapur Srasa - Catering Termurah No 1 di Jabodetabek",
+        type: "image/png",
       }
     ],
   },
@@ -84,6 +98,7 @@ export const metadata: Metadata = {
     title: "Catering Termurah No 1 di Tangerang & Jakarta | Dapur Srasa",
     description: "Catering harian rumahan premium dan nasi box termurah no 1 untuk wilayah BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta dan sekitarnya.",
     images: ["https://dapursrasa.com/meta-image.png"],
+    site: "@dapursrasa",
   },
   icons: {
     icon: [
@@ -160,20 +175,56 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Restaurant",
+              "@type": ["Restaurant", "FoodEstablishment", "LocalBusiness"],
               "name": "Dapur Srasa",
+              "alternateName": "Dapur Srasa Catering",
+              "url": "https://dapursrasa.com",
+              "logo": "https://dapursrasa.com/logo.png",
               "image": "https://dapursrasa.com/meta-image.png",
-              "description": "Layanan catering harian dan nasi box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta dan sekitarnya.",
+              "description": "Layanan catering harian dan nasi box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, Jakarta dan sekitarnya. Menu bervariasi, higienis, dan lezat.",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Gading Serpong, BSD, Alam Sutera",
+                "streetAddress": "Gading Serpong",
                 "addressLocality": "Tangerang",
                 "addressRegion": "Banten",
+                "postalCode": "15810",
                 "addressCountry": "ID"
               },
-              "telephone": "+6281234567890",
-              "servesCuisine": "Indonesian",
-              "priceRange": "$"
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -6.2383,
+                "longitude": 106.6228
+              },
+              "telephone": "+6289532859624",
+              "email": "dapursrasa@gmail.com",
+              "servesCuisine": ["Indonesian", "Catering"],
+              "priceRange": "Rp20.000 - Rp60.000",
+              "currenciesAccepted": "IDR",
+              "paymentAccepted": ["Transfer Bank", "QRIS", "Cash"],
+              "areaServed": [
+                "BSD City", "Gading Serpong", "Alam Sutera", "Tangerang",
+                "Tangerang Selatan", "Jakarta Selatan", "Jakarta Pusat",
+                "Jakarta Barat", "Jakarta Utara", "Jakarta Timur",
+                "Depok", "Bogor", "Bekasi"
+              ],
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                  "opens": "07:00",
+                  "closes": "20:00"
+                }
+              ],
+              "hasMap": "https://maps.google.com/?q=Dapur+Srasa+Gading+Serpong",
+              "sameAs": [
+                "https://www.instagram.com/dapursrasa/",
+                "https://www.tiktok.com/@dapur.srasa"
+              ],
+              "menu": "https://dapursrasa.com/catering-mingguan",
+              "potentialAction": {
+                "@type": "OrderAction",
+                "target": "https://wa.me/62895328596248"
+              }
             })
           }}
         />

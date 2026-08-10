@@ -8,8 +8,24 @@ import { MenuHarianClient } from "@/components/catering/MenuHarianClient";
 const slugify = (text: string) => text.toLowerCase().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '');
 
 export const metadata: Metadata = {
-  title: "Catering Mingguan | Dapur Srasa",
-  description: "Layanan catering mingguan dengan menu rumahan variatif untuk area Gading Serpong, BSD, Alam Sutera, dan sekitarnya. Mulai Rp35.000 per porsi.",
+  title: "Catering Mingguan Murah di BSD, Gading Serpong & Alam Sutera | Dapur Srasa",
+  description: "Layanan catering mingguan dengan menu rumahan variatif untuk area Gading Serpong, BSD, Alam Sutera, dan sekitarnya. Mulai Rp35.000 per porsi. 100% Halal & Higienis.",
+  keywords: ["catering mingguan", "catering harian bsd", "catering gading serpong", "catering alam sutera", "catering rantangan", "nasi harian", "katering murah tangerang"],
+  alternates: {
+    canonical: "https://dapursrasa.com/catering-mingguan",
+  },
+  openGraph: {
+    title: "Catering Mingguan Murah - BSD, Gading Serpong & Alam Sutera | Dapur Srasa",
+    description: "Layanan catering mingguan dengan menu rumahan variatif. Mulai Rp35.000 per porsi. 100% Halal & Higienis. Antar ke lokasi Anda.",
+    url: "https://dapursrasa.com/catering-mingguan",
+    images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: "Catering Mingguan Dapur Srasa" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catering Mingguan Murah - BSD, Gading Serpong & Alam Sutera",
+    description: "Layanan catering mingguan dengan menu rumahan variatif. Mulai Rp35.000 per porsi.",
+    images: ["https://dapursrasa.com/meta-image.png"],
+  },
 };
 
 const keunggulan = [

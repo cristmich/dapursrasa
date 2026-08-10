@@ -3,8 +3,24 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Navigation } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Hubungi Kami | Dapur Srasa",
-  description: "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda.",
+  title: "Hubungi Kami - Pesan Catering & Nasi Box | Dapur Srasa",
+  description: "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda. Respons cepat melalui WhatsApp, telepon, atau email.",
+  keywords: ["hubungi dapur srasa", "pesan catering", "order nasi box", "kontak catering tangerang", "whatsapp catering bsd"],
+  alternates: {
+    canonical: "https://dapursrasa.com/hubungi-kami",
+  },
+  openGraph: {
+    title: "Hubungi Kami - Pesan Catering & Nasi Box | Dapur Srasa",
+    description: "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda. Respons cepat melalui WhatsApp.",
+    url: "https://dapursrasa.com/hubungi-kami",
+    images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: "Hubungi Dapur Srasa" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hubungi Kami - Pesan Catering & Nasi Box | Dapur Srasa",
+    description: "Pesan catering & nasi box Dapur Srasa sekarang. Hubungi via WhatsApp untuk respons cepat!",
+    images: ["https://dapursrasa.com/meta-image.png"],
+  },
 };
 
 const contactInfo = [

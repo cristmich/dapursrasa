@@ -4,8 +4,24 @@ import { CheckCircle2 } from "lucide-react";
 import { CTA } from "@/components/home/CTA";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami | Dapur Srasa",
-  description: "Cerita Dapur Srasa dalam menyajikan makanan rumahan berkualitas tinggi dengan pelayanan terbaik untuk Anda.",
+  title: "Tentang Kami - Dapur Srasa | Catering Rumahan Terpercaya",
+  description: "Mengenal Dapur Srasa lebih dekat. Kami adalah penyedia catering rumahan premium yang menyajikan makanan segar, halal, dan higienis untuk wilayah Jabodetabek.",
+  keywords: ["tentang dapur srasa", "catering halal tangerang", "catering terpercaya bsd", "catering rumahan premium"],
+  alternates: {
+    canonical: "https://dapursrasa.com/tentang-kami",
+  },
+  openGraph: {
+    title: "Tentang Kami - Dapur Srasa | Catering Rumahan Terpercaya",
+    description: "Mengenal Dapur Srasa lebih dekat. Catering rumahan premium yang menyajikan makanan segar, halal, dan higienis untuk Jabodetabek.",
+    url: "https://dapursrasa.com/tentang-kami",
+    images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: "Tentang Dapur Srasa" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tentang Kami - Dapur Srasa",
+    description: "Penyedia catering rumahan premium untuk wilayah Jabodetabek. Halal, higienis, dan terpercaya.",
+    images: ["https://dapursrasa.com/meta-image.png"],
+  },
 };
 
 const misiList = [

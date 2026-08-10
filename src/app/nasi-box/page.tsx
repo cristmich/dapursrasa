@@ -10,6 +10,22 @@ const slugify = (text: string) => text.toLowerCase().replace(/[\s_]+/g, '-').rep
 export const metadata: Metadata = {
   title: "Nasi Box Termurah di Tangerang & Jakarta | Dapur Srasa",
   description: "Pesan Nasi Box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, dan Jakarta. Harga mulai Rp35.000, 100% halal, lezat, dan Gratis Ongkir Jabodetabek.",
+  keywords: ["nasi box", "nasi box murah", "nasi box tangerang", "nasi box bsd", "nasi box gading serpong", "order nasi box", "nasi kotak acara", "katering nasi box", "pesan nasi box jabodetabek"],
+  alternates: {
+    canonical: "https://dapursrasa.com/nasi-box",
+  },
+  openGraph: {
+    title: "Nasi Box Termurah di Tangerang & Jakarta | Dapur Srasa",
+    description: "Pesan Nasi Box termurah No 1 di BSD, Gading Serpong, Alam Sutera, Tangerang, dan Jakarta. Harga mulai Rp35.000, 100% halal.",
+    url: "https://dapursrasa.com/nasi-box",
+    images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: "Nasi Box Dapur Srasa" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nasi Box Termurah di Tangerang & Jakarta | Dapur Srasa",
+    description: "Pesan Nasi Box termurah No 1 di BSD, Gading Serpong, Tangerang & Jakarta. Mulai Rp35.000.",
+    images: ["https://dapursrasa.com/meta-image.png"],
+  },
 };
 
 const paketNasiBox = [
