@@ -7,24 +7,29 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     question: "Apakah ada minimum order untuk pemesanan Nasi Box?",
-    answer: "Untuk Gratis Ongkir, minimum order adalah 100 box. Kami menjangkau seluruh wilayah Jabodetabek. Jika di bawah minimum order, tetap bisa kami layani dengan tambahan ongkos kirim sesuai jarak."
+    answer:
+      "Untuk Gratis Ongkir, minimum order adalah 100 box. Kami menjangkau seluruh wilayah Jabodetabek. Jika di bawah minimum order, tetap bisa kami layani dengan tambahan ongkos kirim sesuai jarak.",
   },
   {
     question: "Berapa lama maksimal pemesanan (H-?) harus dilakukan?",
-    answer: "Kami sangat menyarankan pemesanan dilakukan maksimal H-1 sebelum jam 15.00 WIB. Namun untuk pesanan besar (>100 pax), harap lakukan pemesanan minimal H-3 agar kami dapat mempersiapkan bahan baku terbaik."
+    answer:
+      "Kami sangat menyarankan pemesanan dilakukan maksimal H-1 sebelum jam 15.00 WIB. Namun untuk pesanan besar (>100 pax), harap lakukan pemesanan minimal H-3 agar kami dapat mempersiapkan bahan baku terbaik.",
   },
   {
     question: "Apakah menu Catering Mingguan bisa di-custom?",
-    answer: "Tentu bisa! Jika ada pantangan makanan (misalnya alergi seafood, tidak suka pedas, dsb), Anda dapat menyampaikannya saat pemesanan. Kami akan menyesuaikan porsi Anda."
+    answer:
+      "Tentu bisa! Jika ada pantangan makanan (misalnya alergi seafood, tidak suka pedas, dsb), Anda dapat menyampaikannya saat pemesanan. Kami akan menyesuaikan porsi Anda.",
   },
   {
     question: "Bagaimana sistem pembayarannya?",
-    answer: "Setelah pesanan dan menu disepakati, kami akan mengirimkan invoice/tagihan. Anda diwajibkan membayar Down Payment (DP) minimal 50% agar pesanan masuk ke jadwal produksi kami. Sisa pembayaran dapat dilunasi maksimal pada hari pengiriman."
+    answer:
+      "Setelah pesanan dan menu disepakati, kami akan mengirimkan invoice/tagihan. Anda diwajibkan membayar Down Payment (DP) minimal 50% agar pesanan masuk ke jadwal produksi kami. Sisa pembayaran dapat dilunasi maksimal pada hari pengiriman.",
   },
   {
     question: "Apakah Dapur Srasa terjamin kebersihan dan kehalalannya?",
-    answer: "100% terjamin! Kami hanya menggunakan bahan-bahan segar berkualitas tinggi dan halal. Proses memasak juga dilakukan di dapur higienis berstandar profesional."
-  }
+    answer:
+      "100% terjamin! Kami hanya menggunakan bahan-bahan segar berkualitas tinggi dan halal. Proses memasak juga dilakukan di dapur higienis berstandar profesional.",
+  },
 ];
 
 export function FAQ() {
@@ -51,7 +56,8 @@ export function FAQ() {
             FAQ <span className="text-[#005926]">Pemesanan</span>
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Jawaban untuk beberapa pertanyaan yang paling sering diajukan oleh pelanggan kami.
+            Jawaban untuk beberapa pertanyaan yang paling sering diajukan oleh
+            pelanggan kami.
           </p>
         </motion.div>
 
@@ -66,19 +72,25 @@ export function FAQ() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                  isOpen ? "border-[#005926] shadow-md shadow-[#005926]/5" : "border-gray-200 hover:border-[#005926]/40"
+                  isOpen
+                    ? "border-[#005926] shadow-md shadow-[#005926]/5"
+                    : "border-gray-200 hover:border-[#005926]/40"
                 }`}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full text-left px-6 py-5 flex items-center justify-between bg-white focus:outline-none"
                 >
-                  <span className={`font-semibold text-lg pr-4 ${isOpen ? "text-[#005926]" : "text-[#333]"}`}>
+                  <span
+                    className={`font-semibold text-lg pr-4 ${isOpen ? "text-[#005926]" : "text-[#333]"}`}
+                  >
                     {faq.question}
                   </span>
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                      isOpen ? "bg-[#005926]/10 text-[#005926]" : "bg-gray-100 text-gray-400"
+                      isOpen
+                        ? "bg-[#005926]/10 text-[#005926]"
+                        : "bg-gray-100 text-gray-400"
                     }`}
                   >
                     <ChevronDown

@@ -5,7 +5,9 @@ import { motion } from "framer-motion";
 
 export function WhatsAppButton() {
   const whatsappNumber = "62895328596248";
-  const message = encodeURIComponent("Halo Admin Dapur Srasa, saya butuh bantuan mengenai layanan catering. (Dari Tombol WA Mengambang)");
+  const message = encodeURIComponent(
+    "Halo Admin Dapur Srasa, saya butuh bantuan mengenai layanan catering. (Dari Tombol WA Mengambang)",
+  );
 
   return (
     <motion.a

@@ -127,7 +127,7 @@ export default function robots(): MetadataRoute.Robots {
 
       // ── Social & Other Search Engines ───────────────────────
       {
-        userAgent: "Slurp",           // Yahoo
+        userAgent: "Slurp", // Yahoo
         allow: "/",
         disallow: ["/api/", "/dashboard/", "/login"],
       },

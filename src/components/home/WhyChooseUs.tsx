@@ -1,7 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Leaf, Award, MenuIcon, HandPlatter, Wallet, Truck, Clock, ShieldCheck, Users } from "lucide-react";
+import {
+  Leaf,
+  Award,
+  MenuIcon,
+  HandPlatter,
+  Wallet,
+  Truck,
+  Clock,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 
 const features = [
   {
@@ -97,11 +107,11 @@ export function WhyChooseUs() {
             Keunggulan Kami
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1a1a1a] mb-4 leading-tight">
-            Kenapa Memilih{" "}
-            <span className="text-[#005926]">Dapur Srasa?</span>
+            Kenapa Memilih <span className="text-[#005926]">Dapur Srasa?</span>
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Kami berkomitmen memberikan yang terbaik untuk setiap porsi yang Anda nikmati — dari dapur kami langsung ke meja Anda.
+            Kami berkomitmen memberikan yang terbaik untuk setiap porsi yang
+            Anda nikmati — dari dapur kami langsung ke meja Anda.
           </p>
         </motion.div>
 
@@ -113,11 +123,17 @@ export function WhyChooseUs() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.07, ease: "easeOut" }}
+              transition={{
+                duration: 0.45,
+                delay: index * 0.07,
+                ease: "easeOut",
+              }}
               className={`group relative bg-white rounded-2xl border ${feature.border} p-6 flex gap-5 items-start shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300`}
             >
               {/* Icon */}
-              <div className={`${feature.bg} ${feature.color} p-3.5 rounded-xl shrink-0 transition-transform duration-300 group-hover:scale-110`}>
+              <div
+                className={`${feature.bg} ${feature.color} p-3.5 rounded-xl shrink-0 transition-transform duration-300 group-hover:scale-110`}
+              >
                 <feature.icon className="w-5 h-5" />
               </div>
 
@@ -126,11 +142,15 @@ export function WhyChooseUs() {
                 <h3 className="font-heading font-bold text-base text-[#1a1a1a] mb-1.5">
                   {feature.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {feature.desc}
+                </p>
               </div>
 
               {/* Subtle hover glow */}
-              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${feature.bg} -z-10`} />
+              <div
+                className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${feature.bg} -z-10`}
+              />
             </motion.div>
           ))}
         </div>
@@ -149,8 +169,13 @@ export function WhyChooseUs() {
             { value: "50+", label: "Varian Menu" },
             { value: "100%", label: "Bahan Halal & Segar" },
           ].map(({ value, label }) => (
-            <div key={label} className="text-center p-5 rounded-2xl bg-[#F8F8F8] border border-gray-100">
-              <p className="font-heading text-3xl font-extrabold text-[#005926] mb-1">{value}</p>
+            <div
+              key={label}
+              className="text-center p-5 rounded-2xl bg-[#F8F8F8] border border-gray-100"
+            >
+              <p className="font-heading text-3xl font-extrabold text-[#005926] mb-1">
+                {value}
+              </p>
               <p className="text-gray-500 text-sm font-medium">{label}</p>
             </div>
           ))}

@@ -6,7 +6,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cara Order",
-  description: "Panduan lengkap dan mudah cara melakukan pemesanan catering harian dan nasi box di Dapur Srasa.",
+  description:
+    "Panduan lengkap dan mudah cara melakukan pemesanan catering harian dan nasi box di Dapur Srasa.",
 };
 
 export default function CaraOrderPage() {
@@ -19,7 +20,8 @@ export default function CaraOrderPage() {
               Cara <span className="text-[#D4AF37]">Pemesanan</span>
             </h1>
             <p className="text-xl text-white/90 mb-10">
-              Pesan hidangan lezat Anda dalam hitungan menit. Proses yang mudah, cepat, dan transparan.
+              Pesan hidangan lezat Anda dalam hitungan menit. Proses yang mudah,
+              cepat, dan transparan.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 text-sm font-medium">
               <div className="flex items-center justify-center gap-2 bg-white/10 px-4 py-2 rounded-full">

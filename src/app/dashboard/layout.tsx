@@ -22,7 +22,11 @@ import {
   FileText,
 } from "lucide-react";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
@@ -47,7 +51,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             const userSnap = await getDoc(userRef);
             if (userSnap.exists()) {
               const role = userSnap.data().role || "user";
-              const isStaff = ["superadmin", "super admin", "admin toko", "waiters", "dapur"].includes(role);
+              const isStaff = [
+                "superadmin",
+                "super admin",
+                "admin toko",
+                "waiters",
+                "dapur",
+              ].includes(role);
               if (isStaff) {
                 setIsAuthorized(true);
                 setUserRole(role);
@@ -77,7 +87,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="w-14 h-14 rounded-2xl bg-[#005926]/10 flex items-center justify-center mx-auto">
             <Loader2 className="w-7 h-7 text-[#005926] animate-spin" />
           </div>
-          <p className="text-gray-500 text-sm font-medium">Memverifikasi akses...</p>
+          <p className="text-gray-500 text-sm font-medium">
+            Memverifikasi akses...
+          </p>
         </div>
       </div>
     );
@@ -87,7 +99,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   const navItems = [
     { name: "Ringkasan", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Catering Mingguan", href: "/dashboard/catering-mingguan", icon: Utensils },
+    {
+      name: "Catering Mingguan",
+      href: "/dashboard/catering-mingguan",
+      icon: Utensils,
+    },
     { name: "Nasi Box", href: "/dashboard/nasi-box", icon: Package },
     { name: "Menu Resto", href: "/dashboard/menu-resto", icon: Coffee },
     { name: "History Stok", href: "/dashboard/history-resto", icon: History },
@@ -96,7 +112,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { name: "Pengguna", href: "/dashboard/users", icon: Users },
   ];
 
-  const userDisplayName = user?.displayName || user?.email?.split("@")[0] || "Admin";
+  const userDisplayName =
+    user?.displayName || user?.email?.split("@")[0] || "Admin";
   const userInitial = userDisplayName.charAt(0).toUpperCase();
   const currentPage = navItems.find((i) => i.href === pathname);
 
@@ -107,10 +124,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* ── TOP HEADER ─────────────────────────────────────────── */}
       <header className="fixed top-0 left-0 right-0 z-50 h-14 bg-white border-b border-gray-200 flex items-center px-4 md:px-6 gap-4">
-        
         {/* Logo */}
         <Link href="/" className="shrink-0 mr-2">
           <Image
@@ -131,7 +146,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {currentPage && currentPage.href !== "/dashboard" && (
             <>
               <ChevronRight size={13} />
-              <span className="text-gray-700 font-semibold">{currentPage.name}</span>
+              <span className="text-gray-700 font-semibold">
+                {currentPage.name}
+              </span>
             </>
           )}
         </div>
@@ -156,8 +173,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               {userInitial}
             </div>
             <div className="hidden sm:block leading-tight">
-              <p className="text-xs font-semibold text-gray-800 truncate max-w-[96px]">{userDisplayName}</p>
-              <p className="text-[10px] text-[#D4AF37] font-semibold capitalize">{userRole}</p>
+              <p className="text-xs font-semibold text-gray-800 truncate max-w-[96px]">
+                {userDisplayName}
+              </p>
+              <p className="text-[10px] text-[#D4AF37] font-semibold capitalize">
+                {userRole}
+              </p>
             </div>
           </div>
         </div>
@@ -165,10 +186,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* ── BODY ───────────────────────────────────────────────── */}
       <div className="flex pt-14 min-h-screen">
-
         {/* ── SIDEBAR (desktop only) ─────────────────────────── */}
         <aside className="fixed top-14 left-0 bottom-0 w-56 bg-white border-r border-gray-100 flex-col hidden md:flex z-40">
-          
           <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 pt-2 pb-3">
               Menu
@@ -231,7 +250,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               key={item.href}
               href={item.href}
               className={`flex-1 flex flex-col items-center justify-center gap-1 text-[10px] font-medium transition-colors ${
-                isActive ? "text-[#005926]" : "text-gray-400 hover:text-gray-600"
+                isActive
+                  ? "text-[#005926]"
+                  : "text-gray-400 hover:text-gray-600"
               }`}
             >
               <div
@@ -257,7 +278,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <span className="leading-none">Keluar</span>
         </button>
       </nav>
-
     </div>
   );
 }

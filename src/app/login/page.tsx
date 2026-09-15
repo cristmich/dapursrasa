@@ -44,8 +44,14 @@ export default function LoginPage() {
         await setDoc(userRef, updateData, { merge: true });
       }
       const role = userSnap.exists() ? userSnap.data().role : "user";
-      const isStaff = ["superadmin", "super admin", "admin toko", "waiters", "dapur"].includes(role);
-      
+      const isStaff = [
+        "superadmin",
+        "super admin",
+        "admin toko",
+        "waiters",
+        "dapur",
+      ].includes(role);
+
       return isSuperadmin || isStaff;
     } catch (error) {
       console.error("Gagal menyimpan ke Firestore:", error);
@@ -59,7 +65,11 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
       const isAdmin = await saveUserToFirestore(userCredential.user);
       if (isAdmin) {
         router.push("/dashboard");
@@ -93,17 +103,26 @@ export default function LoginPage() {
 
         <div className="relative z-10 text-center max-w-sm">
           <Link href="/" className="inline-block mb-10">
-            <Image src="/logo-white.png" alt="Dapur Srasa" width={160} height={50} className="object-contain h-12 w-auto" priority />
+            <Image
+              src="/logo-white.png"
+              alt="Dapur Srasa"
+              width={160}
+              height={50}
+              className="object-contain h-12 w-auto"
+              priority
+            />
           </Link>
 
           <div className="w-16 h-0.5 bg-[#D4AF37] mx-auto mb-8" />
 
           <h2 className="font-heading text-3xl font-bold text-white mb-4 leading-snug">
-            Selamat Datang di<br />
+            Selamat Datang di
+            <br />
             <span className="text-[#D4AF37]">Dapur Srasa</span>
           </h2>
           <p className="text-white/60 text-base leading-relaxed">
-            Masuk untuk mengelola menu, pesanan, dan operasional catering Anda dengan mudah.
+            Masuk untuk mengelola menu, pesanan, dan operasional catering Anda
+            dengan mudah.
           </p>
 
           {/* Stats */}
@@ -113,8 +132,13 @@ export default function LoginPage() {
               { value: "5★", label: "Rating" },
               { value: "100%", label: "Halal" },
             ].map((s) => (
-              <div key={s.label} className="bg-white/10 rounded-2xl p-4 border border-white/10">
-                <p className="text-[#D4AF37] font-bold text-xl font-heading">{s.value}</p>
+              <div
+                key={s.label}
+                className="bg-white/10 rounded-2xl p-4 border border-white/10"
+              >
+                <p className="text-[#D4AF37] font-bold text-xl font-heading">
+                  {s.value}
+                </p>
                 <p className="text-white/50 text-xs mt-1">{s.label}</p>
               </div>
             ))}
@@ -125,11 +149,17 @@ export default function LoginPage() {
       {/* ── RIGHT PANEL ── */}
       <div className="w-full lg:w-1/2 flex items-center justify-center px-6 py-12 sm:px-12 bg-[#FAFAFA]">
         <div className="w-full max-w-md">
-
           {/* Mobile Logo */}
           <div className="flex justify-center mb-8 lg:hidden">
             <Link href="/">
-              <Image src="/logo.png" alt="Dapur Srasa" width={140} height={40} className="object-contain" priority />
+              <Image
+                src="/logo.png"
+                alt="Dapur Srasa"
+                width={140}
+                height={40}
+                className="object-contain"
+                priority
+              />
             </Link>
           </div>
 
@@ -155,7 +185,10 @@ export default function LoginPage() {
           <form onSubmit={handleEmailLogin} className="space-y-5">
             {/* Email */}
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-semibold text-[#333]">
+              <label
+                htmlFor="email"
+                className="text-sm font-semibold text-[#333]"
+              >
                 Email
               </label>
               <div className="relative">
@@ -174,7 +207,10 @@ export default function LoginPage() {
 
             {/* Password */}
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-semibold text-[#333]">
+              <label
+                htmlFor="password"
+                className="text-sm font-semibold text-[#333]"
+              >
                 Password
               </label>
               <div className="relative">
@@ -193,7 +229,11 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#005926] transition-colors"
                 >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
                 </button>
               </div>
             </div>
@@ -217,7 +257,10 @@ export default function LoginPage() {
 
           {/* Back to Home */}
           <p className="text-center text-sm text-gray-400 mt-8">
-            <Link href="/" className="hover:text-[#005926] transition-colors hover:underline">
+            <Link
+              href="/"
+              className="hover:text-[#005926] transition-colors hover:underline"
+            >
               ← Kembali ke Beranda
             </Link>
           </p>

@@ -2,7 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CalendarDays, PackageOpen, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  CalendarDays,
+  PackageOpen,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,7 +15,8 @@ const services = [
   {
     id: "catering-mingguan",
     title: "Catering Mingguan",
-    description: "Nikmati menu berbeda setiap minggu dengan masakan rumahan yang lezat, bergizi, dan selalu fresh dikirim langsung ke pintu Anda.",
+    description:
+      "Nikmati menu berbeda setiap minggu dengan masakan rumahan yang lezat, bergizi, dan selalu fresh dikirim langsung ke pintu Anda.",
     icon: CalendarDays,
     image: "/image-catering.png",
     features: [
@@ -30,7 +36,8 @@ const services = [
   {
     id: "nasi-box",
     title: "Nasi Box Premium",
-    description: "Nasi Box premium mulai Rp 30.000 dengan pilihan menu lengkap. Cocok untuk seminar, arisan, wedding, dan acara korporat.",
+    description:
+      "Nasi Box premium mulai Rp 30.000 dengan pilihan menu lengkap. Cocok untuk seminar, arisan, wedding, dan acara korporat.",
     icon: PackageOpen,
     image: "/image-nasibox.png",
     features: [
@@ -72,7 +79,8 @@ export function HighlightServices() {
             <span className="text-[#005926]">Tepat untuk Anda</span>
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Solusi konsumsi terlengkap dengan kualitas premium dan rasa yang autentik dari dapur kami.
+            Solusi konsumsi terlengkap dengan kualitas premium dan rasa yang
+            autentik dari dapur kami.
           </p>
         </motion.div>
 
@@ -84,13 +92,20 @@ export function HighlightServices() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: "easeOut",
+              }}
               className="group relative"
             >
-              <div className={`relative rounded-3xl overflow-hidden flex flex-col h-full border bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${service.highlight ? "border-[#005926]/20 shadow-lg shadow-[#005926]/10" : "border-gray-100 shadow-md"}`}>
-                
+              <div
+                className={`relative rounded-3xl overflow-hidden flex flex-col h-full border bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${service.highlight ? "border-[#005926]/20 shadow-lg shadow-[#005926]/10" : "border-gray-100 shadow-md"}`}
+              >
                 {/* Badge */}
-                <div className={`absolute top-5 left-5 z-20 text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded-full ${service.highlight ? "bg-[#005926] text-white" : "bg-[#D4AF37] text-white"}`}>
+                <div
+                  className={`absolute top-5 left-5 z-20 text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded-full ${service.highlight ? "bg-[#005926] text-white" : "bg-[#D4AF37] text-white"}`}
+                >
                   {service.badge}
                 </div>
 
@@ -102,8 +117,10 @@ export function HighlightServices() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className={`absolute inset-0 ${service.highlight ? "bg-gradient-to-br from-[#005926]/60 to-transparent" : "bg-gradient-to-br from-[#1a1a1a]/50 to-transparent"}`} />
-                  
+                  <div
+                    className={`absolute inset-0 ${service.highlight ? "bg-gradient-to-br from-[#005926]/60 to-transparent" : "bg-gradient-to-br from-[#1a1a1a]/50 to-transparent"}`}
+                  />
+
                   {/* Icon overlaid on image */}
                   <div className="absolute bottom-5 right-5 bg-white/20 backdrop-blur-sm border border-white/30 p-3 rounded-2xl">
                     <service.icon className="h-7 w-7 text-white" />
@@ -123,8 +140,12 @@ export function HighlightServices() {
                   <ul className="space-y-2.5 mb-8 flex-grow">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-3">
-                        <div className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${service.highlight ? "bg-[#005926]/10" : "bg-[#D4AF37]/10"}`}>
-                          <CheckCircle2 className={`h-4 w-4 ${service.highlight ? "text-[#005926]" : "text-[#D4AF37]"}`} />
+                        <div
+                          className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${service.highlight ? "bg-[#005926]/10" : "bg-[#D4AF37]/10"}`}
+                        >
+                          <CheckCircle2
+                            className={`h-4 w-4 ${service.highlight ? "text-[#005926]" : "text-[#D4AF37]"}`}
+                          />
                         </div>
                         <span className="text-gray-700 text-sm">{feature}</span>
                       </li>
@@ -154,7 +175,10 @@ export function HighlightServices() {
           className="text-center text-gray-400 text-sm mt-10"
         >
           Tidak menemukan yang sesuai?{" "}
-          <Link href="/hubungi-kami" className="text-[#005926] font-semibold hover:underline underline-offset-2">
+          <Link
+            href="/hubungi-kami"
+            className="text-[#005926] font-semibold hover:underline underline-offset-2"
+          >
             Hubungi kami untuk paket custom →
           </Link>
         </motion.p>

@@ -15,7 +15,7 @@ export function RedirectIfAdmin() {
         try {
           const userRef = doc(db, "users", user.uid);
           const userSnap = await getDoc(userRef);
-          
+
           if (userSnap.exists() && userSnap.data().role === "superadmin") {
             router.push("/dashboard");
           }

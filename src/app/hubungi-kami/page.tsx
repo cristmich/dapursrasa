@@ -1,24 +1,47 @@
 import { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Navigation } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  MessageCircle,
+  Navigation,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Hubungi Kami - Pesan Catering & Nasi Box | Dapur Srasa",
-  description: "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda. Respons cepat melalui WhatsApp, telepon, atau email.",
-  keywords: ["hubungi dapur srasa", "pesan catering", "order nasi box", "kontak catering tangerang", "whatsapp catering bsd"],
+  description:
+    "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda. Respons cepat melalui WhatsApp, telepon, atau email.",
+  keywords: [
+    "hubungi dapur srasa",
+    "pesan catering",
+    "order nasi box",
+    "kontak catering tangerang",
+    "whatsapp catering bsd",
+  ],
   alternates: {
     canonical: "https://dapursrasa.com/hubungi-kami",
   },
   openGraph: {
     title: "Hubungi Kami - Pesan Catering & Nasi Box | Dapur Srasa",
-    description: "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda. Respons cepat melalui WhatsApp.",
+    description:
+      "Hubungi Dapur Srasa untuk pemesanan catering mingguan, nasi box, atau konsultasi kebutuhan event Anda. Respons cepat melalui WhatsApp.",
     url: "https://dapursrasa.com/hubungi-kami",
-    images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: "Hubungi Dapur Srasa" }],
+    images: [
+      {
+        url: "https://dapursrasa.com/meta-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Hubungi Dapur Srasa",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hubungi Kami - Pesan Catering & Nasi Box | Dapur Srasa",
-    description: "Pesan catering & nasi box Dapur Srasa sekarang. Hubungi via WhatsApp untuk respons cepat!",
+    description:
+      "Pesan catering & nasi box Dapur Srasa sekarang. Hubungi via WhatsApp untuk respons cepat!",
     images: ["https://dapursrasa.com/meta-image.png"],
   },
 };
@@ -68,12 +91,15 @@ export default function HubungiKamiPage() {
           <div className="absolute bottom-0 right-10 w-80 h-80 bg-[#D4AF37] rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <span className="inline-block text-[#D4AF37] text-sm font-bold tracking-widest uppercase mb-4">Konsultasi Gratis</span>
+          <span className="inline-block text-[#D4AF37] text-sm font-bold tracking-widest uppercase mb-4">
+            Konsultasi Gratis
+          </span>
           <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-white mb-5 leading-tight">
             Kami Siap Membantu Anda
           </h1>
           <p className="text-white/75 max-w-2xl mx-auto text-lg leading-relaxed">
-            Ceritakan kebutuhan acara Anda. Tim kami akan merespons dalam waktu kurang dari 1 jam di hari kerja.
+            Ceritakan kebutuhan acara Anda. Tim kami akan merespons dalam waktu
+            kurang dari 1 jam di hari kerja.
           </p>
         </div>
       </div>
@@ -81,23 +107,39 @@ export default function HubungiKamiPage() {
       {/* ── CONTACT CARDS ROW (overlap the header) ── */}
       <div className="container mx-auto px-4 md:px-6 -mt-20 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {contactInfo.map(({ icon: Icon, label, content, link, color, bg }) => (
-            <div key={label} className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col gap-4 hover:shadow-xl transition-shadow">
-              <div className={`${bg} w-12 h-12 rounded-xl flex items-center justify-center shrink-0`}>
-                <Icon className={`${color} w-6 h-6`} />
+          {contactInfo.map(
+            ({ icon: Icon, label, content, link, color, bg }) => (
+              <div
+                key={label}
+                className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col gap-4 hover:shadow-xl transition-shadow"
+              >
+                <div
+                  className={`${bg} w-12 h-12 rounded-xl flex items-center justify-center shrink-0`}
+                >
+                  <Icon className={`${color} w-6 h-6`} />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">
+                    {label}
+                  </p>
+                  {link ? (
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`font-semibold text-[#1a1a1a] hover:${color} transition-colors text-sm leading-relaxed whitespace-pre-line`}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <p className="font-semibold text-[#1a1a1a] text-sm leading-relaxed whitespace-pre-line">
+                      {content}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div>
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">{label}</p>
-                {link ? (
-                  <a href={link} target="_blank" rel="noopener noreferrer" className={`font-semibold text-[#1a1a1a] hover:${color} transition-colors text-sm leading-relaxed whitespace-pre-line`}>
-                    {content}
-                  </a>
-                ) : (
-                  <p className="font-semibold text-[#1a1a1a] text-sm leading-relaxed whitespace-pre-line">{content}</p>
-                )}
-              </div>
-            </div>
-          ))}
+            ),
+          )}
         </div>
       </div>
 
@@ -105,20 +147,22 @@ export default function HubungiKamiPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-
             {/* Form Card */}
             <div className="bg-[#F8F8F8] rounded-3xl p-8 md:p-10 border border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="bg-[#005926] p-2.5 rounded-xl">
                   <MessageCircle className="text-white w-5 h-5" />
                 </div>
-                <span className="text-xs text-gray-400 font-bold uppercase tracking-widest">Kirim Pesan</span>
+                <span className="text-xs text-gray-400 font-bold uppercase tracking-widest">
+                  Kirim Pesan
+                </span>
               </div>
               <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-[#1a1a1a] mb-2">
                 Mulai Konsultasi Menu
               </h2>
               <p className="text-gray-500 text-sm mb-8 leading-relaxed">
-                Isi form di bawah dan pesan Anda akan langsung diteruskan ke WhatsApp admin kami.
+                Isi form di bawah dan pesan Anda akan langsung diteruskan ke
+                WhatsApp admin kami.
               </p>
               <ContactForm />
             </div>
@@ -147,8 +191,12 @@ export default function HubungiKamiPage() {
                     <Navigation className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <p className="font-bold text-base">Dapur Srasa Gading Serpong</p>
-                    <p className="text-white/70 text-sm mt-0.5">Ruko Sorento Grande West B19</p>
+                    <p className="font-bold text-base">
+                      Dapur Srasa Gading Serpong
+                    </p>
+                    <p className="text-white/70 text-sm mt-0.5">
+                      Ruko Sorento Grande West B19
+                    </p>
                   </div>
                 </div>
                 <a
@@ -161,7 +209,6 @@ export default function HubungiKamiPage() {
                 </a>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -169,18 +216,41 @@ export default function HubungiKamiPage() {
       {/* ── FAQ / REASSURANCE STRIP ── */}
       <section className="py-16 bg-[#F8F8F8] border-t border-gray-100">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
-          <h3 className="font-heading text-2xl font-bold text-[#1a1a1a] mb-3">Mengapa Pesan Melalui Kami?</h3>
-          <p className="text-gray-500 mb-10">Kami berkomitmen memberikan pengalaman pesan catering yang mudah dan menyenangkan.</p>
+          <h3 className="font-heading text-2xl font-bold text-[#1a1a1a] mb-3">
+            Mengapa Pesan Melalui Kami?
+          </h3>
+          <p className="text-gray-500 mb-10">
+            Kami berkomitmen memberikan pengalaman pesan catering yang mudah dan
+            menyenangkan.
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
             {[
-              { emoji: "⚡", title: "Respons Cepat", desc: "Tim kami merespons pesan WhatsApp dalam waktu &lt; 1 jam di hari kerja." },
-              { emoji: "🍽️", title: "Konsultasi Menu Gratis", desc: "Kami bantu Anda memilih menu terbaik yang sesuai acara dan budget." },
-              { emoji: "🚚", title: "Pengiriman Tepat Waktu", desc: "Catering Anda tiba sesuai jadwal yang disepakati, tanpa keterlambatan." },
+              {
+                emoji: "⚡",
+                title: "Respons Cepat",
+                desc: "Tim kami merespons pesan WhatsApp dalam waktu &lt; 1 jam di hari kerja.",
+              },
+              {
+                emoji: "🍽️",
+                title: "Konsultasi Menu Gratis",
+                desc: "Kami bantu Anda memilih menu terbaik yang sesuai acara dan budget.",
+              },
+              {
+                emoji: "🚚",
+                title: "Pengiriman Tepat Waktu",
+                desc: "Catering Anda tiba sesuai jadwal yang disepakati, tanpa keterlambatan.",
+              },
             ].map(({ emoji, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div
+                key={title}
+                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
+              >
                 <span className="text-3xl mb-3 block">{emoji}</span>
                 <h4 className="font-bold text-[#1a1a1a] mb-2">{title}</h4>
-                <p className="text-gray-500 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: desc }} />
+                <p
+                  className="text-gray-500 text-sm leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: desc }}
+                />
               </div>
             ))}
           </div>

@@ -36,19 +36,19 @@ export default function HistoryRestoPage() {
         setIsLoading(false);
       }
     };
-    
+
     fetchHistory();
   }, []);
 
   const formatDate = (dateString: string) => {
     try {
-      const options: Intl.DateTimeFormatOptions = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      const options: Intl.DateTimeFormatOptions = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       };
-      return new Date(dateString).toLocaleDateString('id-ID', options);
+      return new Date(dateString).toLocaleDateString("id-ID", options);
     } catch {
       return dateString;
     }
@@ -58,8 +58,12 @@ export default function HistoryRestoPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 font-heading">Riwayat Stok Resto</h1>
-          <p className="text-gray-500 mt-1">Laporan harian stok masuk dan keluar saat tutup toko.</p>
+          <h1 className="text-2xl font-bold text-gray-900 font-heading">
+            Riwayat Stok Resto
+          </h1>
+          <p className="text-gray-500 mt-1">
+            Laporan harian stok masuk dan keluar saat tutup toko.
+          </p>
         </div>
       </div>
 
@@ -72,7 +76,9 @@ export default function HistoryRestoPage() {
           <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400">
             <HistoryIcon size={32} />
           </div>
-          <h3 className="text-lg font-medium text-gray-900">Belum ada riwayat</h3>
+          <h3 className="text-lg font-medium text-gray-900">
+            Belum ada riwayat
+          </h3>
           <p className="text-gray-500 mt-1">
             Riwayat akan muncul setelah Anda melakukan Tutup Toko.
           </p>
@@ -80,7 +86,10 @@ export default function HistoryRestoPage() {
       ) : (
         <div className="space-y-6">
           {histories.map((history) => (
-            <div key={history.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div
+              key={history.id}
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+            >
               <div className="bg-gray-50/80 p-4 border-b border-gray-100 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-gray-200 flex items-center justify-center text-gray-600">
                   <Calendar size={18} />
@@ -98,25 +107,46 @@ export default function HistoryRestoPage() {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-white border-b border-gray-100 text-gray-500 text-xs uppercase tracking-wider">
-                      <th className="p-4 font-semibold whitespace-nowrap text-center w-12">No</th>
-                      <th className="p-4 font-semibold whitespace-nowrap">Nama Menu</th>
-                      <th className="p-4 font-semibold whitespace-nowrap">Kategori</th>
-                      <th className="p-4 font-semibold whitespace-nowrap text-center text-green-700">Stok Masuk</th>
-                      <th className="p-4 font-semibold whitespace-nowrap text-center text-red-700">Stok Keluar / Terjual</th>
+                      <th className="p-4 font-semibold whitespace-nowrap text-center w-12">
+                        No
+                      </th>
+                      <th className="p-4 font-semibold whitespace-nowrap">
+                        Nama Menu
+                      </th>
+                      <th className="p-4 font-semibold whitespace-nowrap">
+                        Kategori
+                      </th>
+                      <th className="p-4 font-semibold whitespace-nowrap text-center text-green-700">
+                        Stok Masuk
+                      </th>
+                      <th className="p-4 font-semibold whitespace-nowrap text-center text-red-700">
+                        Stok Keluar / Terjual
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {history.items.map((item, index) => (
-                      <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
-                        <td className="p-4 text-center text-gray-500 font-medium">{index + 1}</td>
-                        <td className="p-4 font-semibold text-gray-900">{item.name}</td>
+                      <tr
+                        key={item.id}
+                        className="hover:bg-gray-50/50 transition-colors"
+                      >
+                        <td className="p-4 text-center text-gray-500 font-medium">
+                          {index + 1}
+                        </td>
+                        <td className="p-4 font-semibold text-gray-900">
+                          {item.name}
+                        </td>
                         <td className="p-4">
                           <span className="px-3 py-1 rounded-md bg-gray-100 text-gray-600 text-xs font-medium">
                             {item.category}
                           </span>
                         </td>
-                        <td className="p-4 text-center font-bold text-green-600">{item.stockIn}</td>
-                        <td className="p-4 text-center font-bold text-red-500">{item.stockOut}</td>
+                        <td className="p-4 text-center font-bold text-green-600">
+                          {item.stockIn}
+                        </td>
+                        <td className="p-4 text-center font-bold text-red-500">
+                          {item.stockOut}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

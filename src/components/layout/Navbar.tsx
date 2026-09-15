@@ -4,7 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, LogOut, User as UserIcon, LayoutDashboard, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  X,
+  LogOut,
+  User as UserIcon,
+  LayoutDashboard,
+  ChevronDown,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
@@ -39,7 +46,10 @@ export function Navbar() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setIsUserDropdownOpen(false);
       }
     };
@@ -59,7 +69,13 @@ export function Navbar() {
           const userSnap = await getDoc(userRef);
           if (userSnap.exists()) {
             const role = userSnap.data().role || "user";
-            const isStaff = ["superadmin", "super admin", "admin toko", "waiters", "dapur"].includes(role);
+            const isStaff = [
+              "superadmin",
+              "super admin",
+              "admin toko",
+              "waiters",
+              "dapur",
+            ].includes(role);
             setIsAdmin(isStaff || isEmailAdmin);
           } else {
             setIsAdmin(isEmailAdmin);
@@ -89,26 +105,38 @@ export function Navbar() {
     }
   };
 
-  const userDisplayName = user?.displayName || user?.email?.split("@")[0] || "Pengguna";
+  const userDisplayName =
+    user?.displayName || user?.email?.split("@")[0] || "Pengguna";
   const userInitial = userDisplayName.charAt(0).toUpperCase();
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-sm py-3" : "bg-white/95 backdrop-blur-md py-4"
+        isScrolled
+          ? "bg-white shadow-sm py-3"
+          : "bg-white/95 backdrop-blur-md py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <Image src="/logo.png" alt="Dapur Srasa Logo" width={140} height={36} className="object-contain h-9 w-auto" priority />
+            <Image
+              src="/logo.png"
+              alt="Dapur Srasa Logo"
+              width={140}
+              height={36}
+              className="object-contain h-9 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`));
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(`${link.href}/`));
               return (
                 <Link
                   key={link.name}
@@ -118,9 +146,11 @@ export function Navbar() {
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#005926] transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  }`} />
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-[#005926] transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
                 </Link>
               );
             })}
@@ -141,7 +171,9 @@ export function Navbar() {
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#005926] to-[#007a36] flex items-center justify-center text-white text-sm font-bold shadow-sm shrink-0">
                       {userInitial}
                     </div>
-                    <span className="text-sm font-medium text-[#333] max-w-[100px] truncate">{userDisplayName}</span>
+                    <span className="text-sm font-medium text-[#333] max-w-[100px] truncate">
+                      {userDisplayName}
+                    </span>
                     <ChevronDown
                       size={14}
                       className={`text-gray-400 transition-transform duration-200 ${isUserDropdownOpen ? "rotate-180" : ""}`}
@@ -159,8 +191,12 @@ export function Navbar() {
                       >
                         {/* User Info Header */}
                         <div className="px-4 py-3 bg-gray-50 border-b border-gray-100">
-                          <p className="text-sm font-semibold text-gray-800 truncate">{userDisplayName}</p>
-                          <p className="text-xs text-gray-500 truncate mt-0.5">{user.email}</p>
+                          <p className="text-sm font-semibold text-gray-800 truncate">
+                            {userDisplayName}
+                          </p>
+                          <p className="text-xs text-gray-500 truncate mt-0.5">
+                            {user.email}
+                          </p>
                         </div>
 
                         {/* Menu Items */}
@@ -191,12 +227,19 @@ export function Navbar() {
                   </AnimatePresence>
                 </div>
               ) : (
-                <Button variant="outline" render={<Link href="/login" />} className="rounded-full px-5 border-[#005926] text-[#005926] hover:bg-[#005926] hover:text-white transition-colors text-sm">
+                <Button
+                  variant="outline"
+                  render={<Link href="/login" />}
+                  className="rounded-full px-5 border-[#005926] text-[#005926] hover:bg-[#005926] hover:text-white transition-colors text-sm"
+                >
                   Masuk
                 </Button>
               )}
 
-              <Button render={<Link href="/hubungi-kami" />} className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-full px-5 text-sm">
+              <Button
+                render={<Link href="/hubungi-kami" />}
+                className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-full px-5 text-sm"
+              >
                 Hubungi Kami
               </Button>
             </div>
@@ -230,15 +273,21 @@ export function Navbar() {
                     {userInitial}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#333] truncate">{userDisplayName}</p>
-                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                    <p className="text-sm font-semibold text-[#333] truncate">
+                      {userDisplayName}
+                    </p>
+                    <p className="text-xs text-gray-500 truncate">
+                      {user.email}
+                    </p>
                   </div>
                 </div>
               )}
 
               {/* Nav Links */}
               {navLinks.map((link) => {
-                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`));
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(`${link.href}/`));
                 return (
                   <Link
                     key={link.name}
@@ -259,22 +308,37 @@ export function Navbar() {
                 {user ? (
                   <>
                     {isAdmin && (
-                      <Button variant="outline" render={<Link href="/dashboard" />} className="w-full rounded-xl border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white transition-colors justify-start gap-2 px-4">
+                      <Button
+                        variant="outline"
+                        render={<Link href="/dashboard" />}
+                        className="w-full rounded-xl border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white transition-colors justify-start gap-2 px-4"
+                      >
                         <LayoutDashboard size={16} />
                         Dashboard
                       </Button>
                     )}
-                    <Button variant="outline" onClick={handleLogout} className="w-full rounded-xl border-red-200 text-red-600 hover:bg-red-50 justify-start gap-2 px-4">
+                    <Button
+                      variant="outline"
+                      onClick={handleLogout}
+                      className="w-full rounded-xl border-red-200 text-red-600 hover:bg-red-50 justify-start gap-2 px-4"
+                    >
                       <LogOut size={16} />
                       Keluar
                     </Button>
                   </>
                 ) : (
-                  <Button variant="outline" render={<Link href="/login" />} className="w-full rounded-xl border-[#005926] text-[#005926] hover:bg-[#005926] hover:text-white">
+                  <Button
+                    variant="outline"
+                    render={<Link href="/login" />}
+                    className="w-full rounded-xl border-[#005926] text-[#005926] hover:bg-[#005926] hover:text-white"
+                  >
                     Masuk
                   </Button>
                 )}
-                <Button render={<Link href="/hubungi-kami" />} className="w-full bg-[#005926] hover:bg-[#004a1f] text-white rounded-xl">
+                <Button
+                  render={<Link href="/hubungi-kami" />}
+                  className="w-full bg-[#005926] hover:bg-[#004a1f] text-white rounded-xl"
+                >
                   Hubungi Kami
                 </Button>
               </div>

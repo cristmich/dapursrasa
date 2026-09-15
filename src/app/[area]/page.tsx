@@ -19,13 +19,16 @@ import { CTA } from "@/components/home/CTA";
 import { RedirectIfAdmin } from "@/components/auth/RedirectIfAdmin";
 
 function formatArea(area: string) {
-  if (!area) return 'Jabodetabek';
-  return area.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  if (!area) return "Jabodetabek";
+  return area
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
 type Props = {
-  params: Promise<{ area: string }>
-}
+  params: Promise<{ area: string }>;
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { area } = await params;
@@ -52,7 +55,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Catering & Nasi Box Termurah di ${areaName} | Dapur Srasa`,
       description: `Jasa catering dan nasi box termurah di ${areaName}. Mulai Rp30.000, halal, gratis ongkir.`,
       url,
-      images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: `Catering & Nasi Box di ${areaName} - Dapur Srasa` }],
+      images: [
+        {
+          url: "https://dapursrasa.com/meta-image.png",
+          width: 1200,
+          height: 630,
+          alt: `Catering & Nasi Box di ${areaName} - Dapur Srasa`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -77,25 +87,25 @@ export default async function HomeAreaPage({ params }: Props) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FoodEstablishment",
-            "name": `Dapur Srasa ${areaName}`,
-            "image": "https://dapursrasa.com/meta-image.png",
-            "url": `https://dapursrasa.com/${area}`,
-            "telephone": "+6289532859624",
-            "priceRange": "Rp30.000 - Rp199.000",
-            "address": {
+            name: `Dapur Srasa ${areaName}`,
+            image: "https://dapursrasa.com/meta-image.png",
+            url: `https://dapursrasa.com/${area}`,
+            telephone: "+6289532859624",
+            priceRange: "Rp30.000 - Rp199.000",
+            address: {
               "@type": "PostalAddress",
-              "addressLocality": areaName,
-              "addressRegion": "Banten",
-              "addressCountry": "ID"
+              addressLocality: areaName,
+              addressRegion: "Banten",
+              addressCountry: "ID",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "City",
-              "name": areaName
-            }
-          })
+              name: areaName,
+            },
+          }),
         }}
       />
-    
+
       <Hero areaName={areaName} />
       <HighlightServices />
       <WhyChooseUs />

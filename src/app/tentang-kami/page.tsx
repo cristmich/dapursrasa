@@ -5,21 +5,36 @@ import { CTA } from "@/components/home/CTA";
 
 export const metadata: Metadata = {
   title: "Tentang Kami - Dapur Srasa | Catering Rumahan Terpercaya",
-  description: "Mengenal Dapur Srasa lebih dekat. Kami adalah penyedia catering rumahan premium yang menyajikan makanan segar, halal, dan higienis untuk wilayah Jabodetabek.",
-  keywords: ["tentang dapur srasa", "catering halal tangerang", "catering terpercaya bsd", "catering rumahan premium"],
+  description:
+    "Mengenal Dapur Srasa lebih dekat. Kami adalah penyedia catering rumahan premium yang menyajikan makanan segar, halal, dan higienis untuk wilayah Jabodetabek.",
+  keywords: [
+    "tentang dapur srasa",
+    "catering halal tangerang",
+    "catering terpercaya bsd",
+    "catering rumahan premium",
+  ],
   alternates: {
     canonical: "https://dapursrasa.com/tentang-kami",
   },
   openGraph: {
     title: "Tentang Kami - Dapur Srasa | Catering Rumahan Terpercaya",
-    description: "Mengenal Dapur Srasa lebih dekat. Catering rumahan premium yang menyajikan makanan segar, halal, dan higienis untuk Jabodetabek.",
+    description:
+      "Mengenal Dapur Srasa lebih dekat. Catering rumahan premium yang menyajikan makanan segar, halal, dan higienis untuk Jabodetabek.",
     url: "https://dapursrasa.com/tentang-kami",
-    images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: "Tentang Dapur Srasa" }],
+    images: [
+      {
+        url: "https://dapursrasa.com/meta-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Tentang Dapur Srasa",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tentang Kami - Dapur Srasa",
-    description: "Penyedia catering rumahan premium untuk wilayah Jabodetabek. Halal, higienis, dan terpercaya.",
+    description:
+      "Penyedia catering rumahan premium untuk wilayah Jabodetabek. Halal, higienis, dan terpercaya.",
     images: ["https://dapursrasa.com/meta-image.png"],
   },
 };
@@ -37,9 +52,13 @@ export default function TentangKamiPage() {
       <div className="bg-[#005926] pt-28 pb-20 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/cta-image.jpg')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">Cerita Dapur Srasa</h1>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+            Cerita Dapur Srasa
+          </h1>
           <p className="text-xl max-w-2xl mx-auto text-white/90">
-            Hadir dari kecintaan pada masakan rumahan autentik, kami bertumbuh menjadi penyedia layanan catering yang dipercaya oleh berbagai kalangan.
+            Hadir dari kecintaan pada masakan rumahan autentik, kami bertumbuh
+            menjadi penyedia layanan catering yang dipercaya oleh berbagai
+            kalangan.
           </p>
         </div>
       </div>
@@ -48,20 +67,26 @@ export default function TentangKamiPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="bg-white rounded-3xl shadow-xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
             <div className="md:w-1/2 relative min-h-[300px] md:min-h-full">
-              <Image 
-                src="/about-us.png" 
+              <Image
+                src="/about-us.png"
                 alt="Dapur Srasa Kitchen"
                 fill
                 className="object-cover"
               />
             </div>
             <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-[#F8F8F8]">
-              <h2 className="font-heading text-3xl font-bold text-[#005926] mb-4">Visi Kami</h2>
+              <h2 className="font-heading text-3xl font-bold text-[#005926] mb-4">
+                Visi Kami
+              </h2>
               <p className="text-gray-700 text-lg leading-relaxed italic mb-8 border-l-4 border-[#D4AF37] pl-4">
-                "Menyajikan makanan rumahan berkualitas premium dengan pelayanan terbaik untuk menciptakan momen bersantap yang berkesan bagi setiap pelanggan."
+                "Menyajikan makanan rumahan berkualitas premium dengan pelayanan
+                terbaik untuk menciptakan momen bersantap yang berkesan bagi
+                setiap pelanggan."
               </p>
-              
-              <h2 className="font-heading text-3xl font-bold text-[#005926] mb-4">Misi Kami</h2>
+
+              <h2 className="font-heading text-3xl font-bold text-[#005926] mb-4">
+                Misi Kami
+              </h2>
               <ul className="space-y-4">
                 {misiList.map((misi, index) => (
                   <li key={index} className="flex items-start gap-3">
@@ -78,12 +103,19 @@ export default function TentangKamiPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#333333]">Dedikasi Pada Rasa</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#333333]">
+              Dedikasi Pada Rasa
+            </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Setiap menu yang keluar dari dapur kami telah melewati standar pengawasan mutu yang ketat. Mulai dari pemilihan bahan di pasar, proses pembersihan, peracikan bumbu, hingga proses pengemasan.
+              Setiap menu yang keluar dari dapur kami telah melewati standar
+              pengawasan mutu yang ketat. Mulai dari pemilihan bahan di pasar,
+              proses pembersihan, peracikan bumbu, hingga proses pengemasan.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Kami menyadari bahwa hidangan yang lezat bukan hanya soal rasa, tetapi juga tentang bagaimana makanan tersebut dipersiapkan dengan penuh perhatian, higienis, dan cinta. Itulah yang membuat Dapur Srasa berbeda.
+              Kami menyadari bahwa hidangan yang lezat bukan hanya soal rasa,
+              tetapi juga tentang bagaimana makanan tersebut dipersiapkan dengan
+              penuh perhatian, higienis, dan cinta. Itulah yang membuat Dapur
+              Srasa berbeda.
             </p>
           </div>
         </div>
