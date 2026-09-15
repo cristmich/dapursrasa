@@ -87,6 +87,32 @@ export default async function NasiBoxAreaPage({ params }: Props) {
 
   return (
     <>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FoodEstablishment",
+            "name": `Dapur Srasa ${areaName}`,
+            "image": "https://dapursrasa.com/meta-image.png",
+            "url": `https://dapursrasa.com/${area}`,
+            "telephone": "+6289532859624",
+            "priceRange": "Rp30.000 - Rp199.000",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": areaName,
+              "addressRegion": "Banten",
+              "addressCountry": "ID"
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": areaName
+            }
+          })
+        }}
+      />
+    
       {/* JSON-LD Structured Data for Google */}
       <script
         type="application/ld+json"

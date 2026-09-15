@@ -72,6 +72,32 @@ export default async function CateringMingguanAreaPage({ params }: Props) {
 
   return (
     <>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FoodEstablishment",
+            "name": `Dapur Srasa ${areaName}`,
+            "image": "https://dapursrasa.com/meta-image.png",
+            "url": `https://dapursrasa.com/${area}`,
+            "telephone": "+6289532859624",
+            "priceRange": "Rp30.000 - Rp199.000",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": areaName,
+              "addressRegion": "Banten",
+              "addressCountry": "ID"
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": areaName
+            }
+          })
+        }}
+      />
+    
       {/* ── HERO ── */}
       <section className="bg-gradient-to-br from-[#005926] to-[#003818] pt-28 pb-20 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
