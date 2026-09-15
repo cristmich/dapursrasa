@@ -48,7 +48,7 @@ export function Hero({ areaName }: { areaName?: string }) {
             <h1 className="font-heading text-4xl md:text-5xl xl:text-[3.75rem] font-extrabold leading-[1.15] text-[#1a1a1a]">
               Nasi Box Murah Mulai{" "}
               <span className="relative whitespace-nowrap">
-                <span className="relative z-10 text-[#005926]">Rp35.000</span>
+                <span className="relative z-10 text-[#005926]">Rp30.000</span>
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 418 42"
@@ -69,7 +69,7 @@ export function Hero({ areaName }: { areaName?: string }) {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <Button
-                render={<a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20tertarik%20dengan%20promo%20Nasi%20Box%20Rp35.000.%20%28Dari%20Beranda%20Utama%29" target="_blank" rel="noopener noreferrer" />}
+                render={<a href="https://wa.me/62895328596248?text=Halo%20Admin%20Dapur%20Srasa%2C%20saya%20tertarik%20dengan%20promo%20Nasi%20Box%20Rp30.000.%20%28Dari%20Beranda%20Utama%29" target="_blank" rel="noopener noreferrer" />}
                 size="lg"
                 className="bg-[#005926] hover:bg-[#004a1f] text-white rounded-full text-base h-14 px-8 shadow-lg shadow-[#005926]/30 hover:shadow-[#005926]/40 transition-all"
               >

@@ -1,4 +1,11 @@
-export const runtime = 'edge';
+import { allCateringSlugs } from "@/app/sitemap";
+
+export const dynamic = "force-static";
+
+export function generateStaticParams() {
+  return allCateringSlugs.map((area) => ({ area }));
+}
+
 import { Metadata } from "next";
 import { Calendar, MapPin, Clock, CheckCircle2, MessageCircle, Utensils, Star, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,9 +26,36 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { area } = await params;
   const areaName = formatArea(area);
+  const url = `https://dapursrasa.com/catering-mingguan/${area}`;
   return {
-    title: `Catering Mingguan di ${areaName} | Dapur Srasa`,
-    description: `Layanan catering mingguan dengan menu rumahan variatif untuk area ${areaName} dan sekitarnya. Mulai Rp35.000 per porsi, dikirim tepat waktu ke depan pintu Anda.`,
+    title: `Catering Mingguan di ${areaName} - Mulai Rp199.000/pax | Dapur Srasa`,
+    description: `Layanan catering mingguan di ${areaName}. Menu rumahan variatif, berganti setiap hari, mulai Rp199.000/pax. 100% halal, higienis, antar ke lokasi Anda.`,
+    keywords: [
+      `catering mingguan ${areaName.toLowerCase()}`,
+      `catering harian ${areaName.toLowerCase()}`,
+      `catering rantangan ${areaName.toLowerCase()}`,
+      `langganan catering ${areaName.toLowerCase()}`,
+      `nasi harian ${areaName.toLowerCase()}`,
+      `katering murah ${areaName.toLowerCase()}`,
+      "catering halal",
+      "catering rumahan premium",
+      "dapur srasa catering",
+    ],
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: `Catering Mingguan di ${areaName} - Mulai Rp199.000/pax | Dapur Srasa`,
+      description: `Menu rumahan variatif untuk area ${areaName}. Mulai Rp199.000/pax, berganti tiap hari, 100% halal & higienis.`,
+      url,
+      images: [{ url: "https://dapursrasa.com/meta-image.png", width: 1200, height: 630, alt: `Catering Mingguan Dapur Srasa di ${areaName}` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Catering Mingguan di ${areaName} | Dapur Srasa`,
+      description: `Catering harian rumahan untuk ${areaName}. Mulai Rp199.000/pax, halal & higienis.`,
+      images: ["https://dapursrasa.com/meta-image.png"],
+    },
   };
 }
 
@@ -29,7 +63,7 @@ const keunggulan = [
   { icon: Utensils, title: "Menu Berganti Tiap Hari", desc: "Tidak bosan, selalu ada pilihan baru setiap harinya." },
   { icon: CheckCircle2, title: "100% Halal & Higienis", desc: "Dimasak dengan bahan segar dari sumber terpercaya." },
   { icon: Truck, title: "Antar ke Lokasi Anda", desc: "Pengiriman pagi & siang tepat waktu setiap harinya." },
-  { icon: Star, title: "Harga Mulai Rp35.000", desc: "Terjangkau tanpa mengorbankan kualitas dan rasa." },
+  { icon: Star, title: "Harga Mulai Rp199.000/pax", desc: "Terjangkau tanpa mengorbankan kualitas dan rasa." },
 ];
 
 export default async function CateringMingguanAreaPage({ params }: Props) {

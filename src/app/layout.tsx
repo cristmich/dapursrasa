@@ -58,12 +58,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://dapursrasa.com",
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
-    other: {
-      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
-    },
-  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+          other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+            ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+            : {},
+        },
+      }
+    : {}),
   robots: {
     index: true,
     follow: true,
@@ -134,6 +138,17 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} h-full antialiased`}
     >
       <head>
+        {/* ── Supplementary Crawler Hints (Next.js handles robots/googlebot automatically) ── */}
+        {/* Referrer policy */}
+        <meta name="referrer" content="origin-when-cross-origin" />
+        {/* Language & geo hints for local search */}
+        <meta httpEquiv="content-language" content="id" />
+        <meta name="geo.region" content="ID-BT" />
+        <meta name="geo.placename" content="Tangerang, Banten, Indonesia" />
+        <meta name="geo.position" content="-6.2383;106.6228" />
+        <meta name="ICBM" content="-6.2383, 106.6228" />
+
+        {/* ── Google Tag Manager / Analytics ───────────────────────── */}
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-S8PVBJR7ZN" />
         <Script
           id="google-analytics"
@@ -160,7 +175,107 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* ── SiteNavigationElement JSON-LD (helps AI understand site structure) ── */}
+        <Script
+          id="ld-sitenavigation"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SiteLinksSearchBox",
+              "url": "https://dapursrasa.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://dapursrasa.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        {/* ── BreadcrumbList JSON-LD (helps AI crawlers understand page hierarchy) ── */}
+        <Script
+          id="ld-breadcrumb"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://dapursrasa.com" },
+                { "@type": "ListItem", "position": 2, "name": "Catering Mingguan", "item": "https://dapursrasa.com/catering-mingguan" },
+                { "@type": "ListItem", "position": 3, "name": "Nasi Box", "item": "https://dapursrasa.com/nasi-box" },
+                { "@type": "ListItem", "position": 4, "name": "Tentang Kami", "item": "https://dapursrasa.com/tentang-kami" },
+                { "@type": "ListItem", "position": 5, "name": "Hubungi Kami", "item": "https://dapursrasa.com/hubungi-kami" },
+              ]
+            })
+          }}
+        />
+        {/* ── FAQ JSON-LD (appears in rich snippets & AI answers) ── */}
+        <Script
+          id="ld-faq"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Berapa harga nasi box Dapur Srasa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Harga nasi box Dapur Srasa mulai dari Rp 30.000 per box, sudah termasuk nasi putih, lauk utama, 2 lauk pendamping, free sambal, dan free kerupuk."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Area mana saja yang dilayani Dapur Srasa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Dapur Srasa melayani seluruh wilayah Jabodetabek, termasuk BSD City, Gading Serpong, Alam Sutera, Tangerang, Tangerang Selatan, Jakarta Selatan, Jakarta Pusat, Jakarta Barat, Jakarta Timur, Jakarta Utara, Depok, Bogor, dan Bekasi."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Apakah catering Dapur Srasa halal?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ya, 100% Halal. Dapur Srasa menerapkan prinsip No Pork No Lard. Semua bahan dan proses memasak memenuhi standar halal."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Berapa minimum order nasi box Dapur Srasa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Minimum order nasi box adalah 10 box per pesanan."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Apa itu Catering Mingguan Dapur Srasa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Catering Mingguan adalah layanan berlangganan makan harian Senin–Jumat. Menu berganti setiap hari dengan 17 pilihan varian lauk dari ayam, ikan, daging, dan udang. Harga mulai Rp 199.000 per pax."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Bagaimana cara memesan catering Dapur Srasa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pesan melalui WhatsApp ke nomor +6289532859624 atau klik tombol WhatsApp di website dapursrasa.com. Admin kami siap membantu 07.00–20.00 setiap hari."
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </head>
+
       <body className="min-h-full flex flex-col font-sans text-[#333333] bg-[#FFFFFF]">
         <noscript>
           <iframe 

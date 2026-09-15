@@ -21,6 +21,16 @@ const cateringRegions = [
   { city: "Alam Sutera", areas: ["Alam Sutera", "Serpong Utara", "Pakualam", "Jelupang", "Cipondoh"] },
 ];
 
+export const allAreaSlugs = regions.flatMap(r => [
+  slugify(r.city),
+  ...r.areas.map(a => slugify(a)),
+]);
+
+export const allCateringSlugs = cateringRegions.flatMap(r => [
+  slugify(r.city),
+  ...r.areas.map(a => slugify(a)),
+]);
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dapursrasa.com";
   const now = new Date();
@@ -37,23 +47,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Area-specific landing pages (SEO local intent)
-  const areaSlugs = regions.flatMap(r => [
-    slugify(r.city),
-    ...r.areas.map(a => slugify(a)),
-  ]);
-
-  const areaPages: MetadataRoute.Sitemap = areaSlugs.flatMap((slug) => [
+  const areaPages: MetadataRoute.Sitemap = allAreaSlugs.flatMap((slug) => [
     { url: `${baseUrl}/${slug}`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/nasi-box/${slug}`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ]);
 
   // Catering mingguan area pages
-  const cateringSlugs = cateringRegions.flatMap(r => [
-    slugify(r.city),
-    ...r.areas.map(a => slugify(a)),
-  ]);
-
-  const cateringPages: MetadataRoute.Sitemap = cateringSlugs.map((slug) => ({
+  const cateringPages: MetadataRoute.Sitemap = allCateringSlugs.map((slug) => ({
     url: `${baseUrl}/catering-mingguan/${slug}`,
     lastModified: now,
     changeFrequency: "weekly",

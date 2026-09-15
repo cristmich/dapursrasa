@@ -30,11 +30,11 @@ const services = [
   {
     id: "nasi-box",
     title: "Nasi Box Premium",
-    description: "Nasi Box premium mulai Rp 35.000 dengan pilihan menu lengkap. Cocok untuk seminar, arisan, wedding, dan acara korporat.",
+    description: "Nasi Box premium mulai Rp 30.000 dengan pilihan menu lengkap. Cocok untuk seminar, arisan, wedding, dan acara korporat.",
     icon: PackageOpen,
     image: "/image-nasibox.png",
     features: [
-      "Harga mulai Rp 35.000/box",
+      "Harga mulai Rp 30.000/box",
       "FREE Ongkir Jabodetabek",
       "Menu dapat di-request",
       "Kemasan eksklusif & rapi",
